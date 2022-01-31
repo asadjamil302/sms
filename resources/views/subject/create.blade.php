@@ -12,21 +12,17 @@
                     <div class="form-colume">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Subject Name</label>
-                            <input type="name" name="name" class="form-control" id="inputEmail4" placeholder="Enter the subject">
+                            <input type="name" name="subject_name" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
                         </div>
-                        
                     
                         <div class="form-group col-md-6">
-                            <label for="inputState">Duration</label>
-                            <select id="inputState"name="duration" class="form-control">
-                                <option selected>3 months</option>
-                                <option>6 months</option>
-                                <option>9 months</option>
-                            </select>
+                            <label for="inputPassword4">Subject ID</label>
+                            <input type="text" name="subject_id" class="form-control" id="inputPassword4" placeholder="Enter the Subject id">
                         </div>
+
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Fees</label>
-                            <input type="text" name="fees" class="form-control" id="inputPassword4" placeholder="Enter the fees">
+                            <label for="inputPassword4">Subject Status</label>
+                            <input type="text" name="status" class="form-control" id="inputPassword4" placeholder="Enter the Subject status">
                         </div>
                         <div class="form-group col-md-6 ">
                              <button type="submit" class="btn btn-primary">Submit</button>

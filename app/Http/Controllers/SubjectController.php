@@ -38,9 +38,9 @@ class SubjectController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
-            'duration' => 'required',
-            'fees' => 'required',
+            'subject_name' => 'required',
+            'subject_id' => 'required',
+            'status' => 'required',
 
         ]);
 
