@@ -16,14 +16,10 @@
                         </div>
                     
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Subject ID</label>
-                            <input type="text" name="subject_id" class="form-control" id="inputPassword4" placeholder="Enter the Subject id">
+                            <label for="inputPassword4">Subject code</label>
+                            <input type="text" name="subject_code" class="form-control" id="inputPassword4" placeholder="Enter the Subject id">
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Subject Status</label>
-                            <input type="text" name="status" class="form-control" id="inputPassword4" placeholder="Enter the Subject status">
-                        </div>
                         <div class="form-group col-md-6 ">
                              <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

@@ -39,9 +39,7 @@ class SubjectController extends Controller
         //
         $request->validate([
             'subject_name' => 'required',
-            'subject_id' => 'required',
-            'status' => 'required',
-
+            'subject_code' => 'required|unique',
         ]);
 
         subject::create($request->all());
