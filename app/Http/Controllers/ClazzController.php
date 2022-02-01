@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\Clazz;
 use Illuminate\Http\Request;
 
-class SubjectController extends Controller
+class ClazzController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class SubjectController extends Controller
     public function create()
     {
         //
-        return view('subject.create');
+        return view('clazz.create');
     }
 
     /**
@@ -38,22 +38,21 @@ class SubjectController extends Controller
     {
         //
         $request->validate([
-            'subject_name' => 'required',
-            'subject_code' => 'required|unique:subjects',
+            'class_name' => 'required',
         ]);
+        // dd($request);
+        clazz::create($request->all());
 
-        subject::create($request->all());
-
-        return redirect()->route('subjects.create')->with('success','Post created successfully.');
+        return redirect()->route('clazzs.create')->with('success','Post created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Clazz  $clazz
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show(Clazz $clazz)
     {
         //
     }
@@ -61,10 +60,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Clazz  $clazz
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit(Clazz $clazz)
     {
         //
     }
@@ -73,10 +72,10 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Clazz  $clazz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, Clazz $clazz)
     {
         //
     }
@@ -84,10 +83,10 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Clazz  $clazz
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(Clazz $clazz)
     {
         //
     }

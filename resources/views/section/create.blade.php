@@ -6,18 +6,13 @@
 @section('content')
      <!-- Page Content -->
      <div class="content">
-        <form action="{{route('subjects.store')}}" method="POST">
+        <form action="{{route('sections.store')}}" method="POST">
             @csrf
             <div class="container" width="80%">
                     <div class="form-colume">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Subject Name</label>
-                            <input type="name" name="subject_name" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
-                        </div>
-                    
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Subject code</label>
-                            <input type="text" name="subject_code" class="form-control" id="inputPassword4" placeholder="Enter the Subject id">
+                            <label for="inputEmail4">Section Name</label>
+                            <input type="name" name="section_name" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
                         </div>
 
                         <div class="form-group col-md-6 ">
