@@ -54,7 +54,7 @@ class StudentController extends Controller
             'rollno' => $request->rollno,
             'department' => $request->department
         ]);
-        foreach($request->selectsubject as $item=>$value){
+        foreach($request->subject as $item=>$value){
             DB::table('student_subjects')->insert([
                 'student_id'=> $data->id,
                 'subject_id' => $value

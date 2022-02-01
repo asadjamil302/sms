@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-   
+    // protected $table ='students';
     protected $guarded = [
-        'id'
+        
+                'id'
     ];
     public function subjects(){
         return $this->belongsToMany(Subject::class, 'student_subjects');

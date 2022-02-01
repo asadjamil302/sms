@@ -17,7 +17,7 @@
                     
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Subject code</label>
-                            <input type="text" name="subject_code" class="form-control" id="inputPassword4" placeholder="Enter the Subject id">
+                            <input type="text" name="subject_code" class="form-control" id="inputPassword4" placeholder="Enter the Subject Code">
                         </div>
 
                         <div class="form-group col-md-6 ">
