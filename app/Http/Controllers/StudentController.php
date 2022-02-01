@@ -6,6 +6,8 @@ use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class StudentController extends Controller
 {
@@ -16,6 +18,8 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $students = Student::with('subjects')->get();
+        return view('student.index', compact('students'));
         
     }
 
@@ -79,10 +83,15 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
-    }
+        
+        $student = student::find($id);
+        $subjects = Subject::all();
+        return view ('student.edit' , compact('student'), compact('subjects'));
+
+        
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -94,6 +103,24 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         //
+        $request->validate([
+            'studentname'=>'required',
+            'rollno' => 'required|unique:students,rollno',
+            'department' => 'required'
+            ]);
+       
+            
+        $data=Student::create([
+            'studentname' => $request->studentname,
+            'rollno' => $request->rollno,
+            'department' => $request->department
+        ]);
+        foreach($request->subject as $item=>$value){
+            DB::table('student_subjects')->insert([
+                'student_id'=> $data->id,
+                'subject_id' => $value
+            ]);     
+        }
     }
 
     /**
@@ -102,8 +129,11 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
         //
+        $student = student::find($id);
+        DB::table('student_subjects')->where('id', $id)->delete();
+    
     }
 }

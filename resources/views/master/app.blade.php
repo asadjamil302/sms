@@ -157,5 +157,7 @@
             webpack is putting everything together at assets/_es6/main/app.js
         -->
         <script src="{{asset('assets/js/codebase.app.min.js')}}"></script>
+        
+
     </body>
 </html>
