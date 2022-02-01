@@ -48,7 +48,7 @@ class StudentController extends Controller
         //
         $request->validate([
             'studentname'=>'required',
-            'rollno' => 'required|unique:students,rollno',
+            'rollno' => 'required|unique:students',
             'department' => 'required'
             ]);
        
@@ -64,6 +64,7 @@ class StudentController extends Controller
                 'subject_id' => $value
             ]);     
         }
+          return redirect()->route('students.create')->with('success','Post created successfully.');
     }
 
     /**
@@ -103,24 +104,25 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         //
-        $request->validate([
-            'studentname'=>'required',
-            'rollno' => 'required|unique:students,rollno',
-            'department' => 'required'
-            ]);
+        // $request->validate([
+        //     'studentname'=>'required',
+        //     'rollno' => 'required|unique:students',
+        //     'department' => 'required'
+        //     ]);
        
             
-        $data=Student::create([
-            'studentname' => $request->studentname,
-            'rollno' => $request->rollno,
-            'department' => $request->department
-        ]);
-        foreach($request->subject as $item=>$value){
-            DB::table('student_subjects')->insert([
-                'student_id'=> $data->id,
-                'subject_id' => $value
-            ]);     
-        }
+        // $data=Student::create([
+        //     'studentname' => $request->studentname,
+        //     'rollno' => $request->rollno,
+        //     'department' => $request->department
+        // ]);
+        // foreach($request->subject as $item=>$value){
+        //     DB::table('student_subjects')->update([
+        //         'student_id'=> $data->id,
+        //         'subject_id' => $value
+        //     ]);     
+        // }
+        // return redirect()->route('students.create')->with('success','Post created successfully.');
     }
 
     /**
