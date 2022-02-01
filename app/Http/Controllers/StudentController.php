@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-         $students = Student::with('subjects')->get();
+        $students = Student::with('subjects')->get();
         return view('student.index', compact('students'));
         
     }
@@ -57,7 +57,7 @@ class StudentController extends Controller
             'department' => $request->department
         ]);
 
-        foreach($request->selectsubject as $item=>$value){
+        foreach($request->subject as $item=>$value){
             DB::table('student_subjects')->insert([
                 'student_id'=> $data->id,
                 'subject_id' => $value
