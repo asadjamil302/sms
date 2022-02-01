@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClazzController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 
 /*
@@ -19,12 +20,9 @@ use App\Http\Controllers\SubjectController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 
 Route::resource('students', StudentController::class);
 
-=======
 Route::resource('subjects', SubjectController::class );
 Route::resource('clazzs', ClazzController::class);
 Route::resource('sections', SectionController::class);
->>>>>>> 6c7a58a20ef5aa6f7928987032e3ae165e885c78
