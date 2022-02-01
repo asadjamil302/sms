@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Student;
-
+use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -27,7 +27,9 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view ('student.index');
+        $subjects = Subject::all();
+        return view ('student.create' ,compact('subjects'));
+        
       
     }
 
@@ -46,13 +48,18 @@ class StudentController extends Controller
             'department' => 'required'
             ]);
        
-       // $student = new student;
+       
         $data=Student::create([
             'studentname' => $request->studentname,
             'rollno' => $request->rollno,
             'department' => $request->department
-     ]);
-        
+        ]);
+        foreach($request->selectsubject as $item=>$value){
+            DB::table('student_subjects')->insert([
+                'student_id'=> $data->id,
+                'subject_id' => $value
+            ]);     
+        }
     }
 
     /**
