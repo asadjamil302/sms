@@ -50,4 +50,5 @@
 $(".multiple-select").select2({
   //maximumSelectionLength: 2
 });
+</script>
 @endsection

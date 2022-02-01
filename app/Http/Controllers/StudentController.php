@@ -28,7 +28,7 @@ class StudentController extends Controller
     {
         //
         $subjects = Subject::all();
-        return view ('student.create' ,compact('subjects'));
+        return view ('student.create' , compact('subjects'));
         
       
     }
