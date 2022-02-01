@@ -5,7 +5,6 @@ use App\Http\Controllers\ClazzController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
