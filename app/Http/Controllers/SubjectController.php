@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,9 @@ class SubjectController extends Controller
     public function index()
     {
         //
+       
+        $subjects = Subject::all(); 
+        return view('subject.index',compact('subjects'));
     }
 
     /**
@@ -42,7 +46,14 @@ class SubjectController extends Controller
             'subject_code' => 'required|unique:subjects',
         ]);
 
-        subject::create($request->all());
+        subject::create([
+                            'subject_name' => $request->subject_name,
+                            // 'slug' ＝＞$slug 
+                            'subject_code' => $request->subject_code,
+                        ]);
+
+
+        // subject::create($request->all());
 
         return redirect()->route('subjects.create')->with('success','Post created successfully.');
     }
@@ -64,9 +75,15 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
         //
+        $subjects = Subject::findOrFail($id);
+    
+        // dd($subjects);
+        return view('subject.edit', compact('subjects'));
+      
+
     }
 
     /**
@@ -76,9 +93,16 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, $id)
     {
         //
+       $data= $request->validate([
+            'subject_name' => 'required',
+            'subject_code' => 'required|unique:subjects',
+        ]);
+        Subject::whereId($id)->update($data);
+
+        return redirect()->route('subjects/')->with('success','Post updated successfully.');
     }
 
     /**
@@ -87,8 +111,11 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
         //
+        $subjects = Subject::findOrFail($id);
+        $subjects->delete();
+        return redirect()->route('subjects.create')->with('success','Post deleted successfully.');
     }
 }
