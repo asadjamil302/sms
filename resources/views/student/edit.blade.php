@@ -40,16 +40,11 @@
       <div class="select2.js form-group col-md-6">
         <label for="inputState">Select subject</label>
         <select  id="inputState" name="subject[]" class="form-control multiple-select"  multiple>
-          @foreach ($subjects as $sub)
 
-            @foreach ($student->subjects as $item)
-              <option value="{{$item->pivot->subject_id}}" selected>{{$item->subject_name}} </option>
-              @foreach ($subjects as $sub)
-                  
-              @endforeach
+            @foreach ($subjects as $item)
+            <option {{in_array($item->id, $student_subjects) ? 'selected':''}}> {{$item->subject_name}}</option>
             @endforeach
             
-          @endforeach
         
         </select>
       </div>
