@@ -46,11 +46,9 @@ class SubjectController extends Controller
             'subject_code' => 'required|unique:subjects',
         ]);
 
-        subject::create([
-                            'subject_name' => $request->subject_name,
-                            // 'slug' ＝＞$slug 
-                            'subject_code' => $request->subject_code,
-                        ]);
+
+        $request['slug']= Str::slug($request->subject_name);
+       $subjects= subject::create($request);
 
 
         // subject::create($request->all());
@@ -75,14 +73,10 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
         //
-        $subjects = Subject::findOrFail($id);
-    
-        // dd($subjects);
-        return view('subject.edit', compact('subjects'));
-      
+           
 
     }
 
@@ -93,16 +87,9 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject)
     {
         //
-       $data= $request->validate([
-            'subject_name' => 'required',
-            'subject_code' => 'required|unique:subjects',
-        ]);
-        Subject::whereId($id)->update($data);
-
-        return redirect()->route('subjects/')->with('success','Post updated successfully.');
     }
 
     /**
@@ -111,11 +98,8 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
         //
-        $subjects = Subject::findOrFail($id);
-        $subjects->delete();
-        return redirect()->route('subjects.create')->with('success','Post deleted successfully.');
     }
 }
