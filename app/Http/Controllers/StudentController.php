@@ -20,7 +20,7 @@ class StudentController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $students = Student::with('subjects')->get();
@@ -56,7 +56,7 @@ class StudentController extends Controller
             'rollno' => 'required|unique:students',
             'department' => 'required'
         ]);
-        $data['slug'] = Str::slug($request->studentname);
+      //  $data['slug'] = Str::slug($request->studentname);
        
        
         $student = Student::create($data);
@@ -65,10 +65,10 @@ class StudentController extends Controller
                 'student_id'=> $student->id,
                 'subject_id' => $value
             ]);  
-            return redirect()->route('students.create')->with('status','student data update successfully');    
+            return redirect()->route('students.create')->with('success','Post created successfully.');   
         }
         
-        return redirect()->route('students.create')->with('success','Post created successfully.');
+        
     }
 
     /**
