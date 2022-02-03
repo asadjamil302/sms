@@ -21,17 +21,17 @@
     <div class="form-colume">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Student Name</label>
-        <input type="name" name="studentname" value="{{$student->studentname}}" required class="form-control" id="inputEmail4" placeholder="Enter your name">
+        <input type="name" name="studentname" value="" required class="form-control" id="inputEmail4" placeholder="Enter your name">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Roll no</label>
-        <input type="text" name="rollno" value="{{$student->rollno}}"  required class="form-control" id="inputPassword4" placeholder="Enter your rollno">
+        <input type="text" name="rollno" value=""  required class="form-control" id="inputPassword4" placeholder="Enter your rollno">
       </div>
   
    
       <div class="form-group col-md-6">
       <label for="inputState">department</label>
-        <select id="inputState"name="department" value="{{$student->department}}" required class="form-control">
+        <select id="inputState"name="department" value="" required class="form-control">
           <option selected>computer science</option>
           <option>software engineering</option>
           <option>information technology</option>
@@ -39,10 +39,18 @@
       </div>
       <div class="select2.js form-group col-md-6">
         <label for="inputState">Select subject</label>
-        <select  id="inputState" name="subject[]" value="{{$student->subject}}"  required class="form-control multiple-select" multiple>
-        @foreach($subjects as $item)
-          <option value="{{$item->id}}">{{$item->subject_name}}</option>
-         @endforeach
+        <select  id="inputState" name="subject[]" class="form-control multiple-select"  multiple>
+          @foreach ($subjects as $sub)
+
+            @foreach ($student->subjects as $item)
+              <option value="{{$item->pivot->subject_id}}" selected>{{$item->subject_name}} </option>
+              @foreach ($subjects as $sub)
+                  
+              @endforeach
+            @endforeach
+            
+          @endforeach
+        
         </select>
       </div>
       <div class="form-group col-md-6 ">

@@ -27,3 +27,6 @@ Route::resource('subjects', SubjectController::class );
 Route::resource('clazzs', ClazzController::class);
 Route::resource('sections', SectionController::class);
 Route::resource('signups', SignupController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
