@@ -21,12 +21,12 @@
             <tbody>
                 @foreach ($subjects as $item)
                 <tr>
-                    <td>{{$item->id}}</td>
+                    <td>{{$item->slug}}</td>
                     <td>{{$item->subject_name}}</td>
                     <td>{{$item->subject_code}}</td>
                     <td>{{$item->status}}</td>
 
-                    <td><a class="btn btn-primary" href="{{route('subjects.edit', $item->id)}}">Edit</a></td>
+                    <td><a class="btn btn-primary" href="{{route('subjects.edit', $item->slug)}}">Edit</a></td>
                     <form action="{{ route('subjects.destroy',$item->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
                         @method('DELETE')

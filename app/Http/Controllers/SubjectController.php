@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Subject;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Subset;
 
 class SubjectController extends Controller
 {
@@ -41,17 +43,19 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+       $data = $request->validate([
             'subject_name' => 'required',
             'subject_code' => 'required|unique:subjects',
         ]);
+       
+        $data['slug'] = Str::slug($request->subject_name);
+       
+       
+        $subjects = Subject::create($data);
 
+        // dd($request);
 
-        $request['slug']= Str::slug($request->subject_name);
-       $subjects= subject::create($request);
-
-
-        // subject::create($request->all());
+       
 
         return redirect()->route('subjects.create')->with('success','Post created successfully.');
     }
@@ -76,6 +80,9 @@ class SubjectController extends Controller
     public function edit(Subject $subject)
     {
         //
+        
+        // $subjects = Subject::all();
+        return view('subject.edit', compact('subject'));
            
 
     }
