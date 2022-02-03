@@ -92,16 +92,8 @@ class StudentController extends Controller
     {
         
         $subjects = Subject::all();
-        // $users = User::whereHas(
-        //     'roles', function($q){
-        //         $q->where('name', 'care-manager');
-        //     }
-        // )->get();
-        // $student = Student::with('subjects')->get();
-        // dd($subjects)
-  
-    
-        return view ('student.edit' , compact('student'), compact('subjects'));
+        $student_subjects = $student->subjects->pluck('id')->toArray();
+        return view ('student.edit' ,compact('subjects','student_subjects'));
 
         
     } 
