@@ -62,7 +62,8 @@ class StudentController extends Controller
             DB::table('student_subjects')->insert([
                 'student_id'=> $data->id,
                 'subject_id' => $value
-            ]);     
+            ]);  
+            return redirect()->route('students.create')->with('status','student data update successfully');    
         }
     }
 
@@ -119,7 +120,8 @@ class StudentController extends Controller
             DB::table('student_subjects')->insert([
                 'student_id'=> $data->id,
                 'subject_id' => $value
-            ]);     
+            ]);    
+            
         }
     }
 

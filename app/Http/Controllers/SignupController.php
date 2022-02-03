@@ -45,10 +45,11 @@ class SignupController extends Controller
             'password' => 'required|confirmed|min:6',
 
         ]);
-        $input = $request->all();
-        $request->password = Hash::make($request->input('password'));
-
-        signup::create($input);
+        $user = new signup;
+        $user->username =$request->input('username');
+        $user->email =$request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
 
         return redirect()->route('signups.create')->with('success','user created successfully.');
     }
