@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $table ='students';
+    // protected $table ='students';
     protected $guarded = [
         
                 'id'
     ];
     public function subjects(){
-        return $this->belongsToMany(Subject::class, 'student_subjects');
+        return $this->belongsToMany(Subject::class,'student_subjects');
                     
     }
 }

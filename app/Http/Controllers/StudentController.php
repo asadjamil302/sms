@@ -16,6 +16,11 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $students = Student::with('subjects')->get();
@@ -46,25 +51,24 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        $data = $request->validate([
             'studentname'=>'required',
-            'rollno' => 'required|unique:students,rollno',
+            'rollno' => 'required|unique:students',
             'department' => 'required'
-            ]);
-       
-       
-        $data=Student::create([
-            'studentname' => $request->studentname,
-            'rollno' => $request->rollno,
-            'department' => $request->department
         ]);
+        $data['slug'] = Str::slug($request->studentname);
+       
+       
+        $student = Student::create($data);
         foreach($request->subject as $item=>$value){
             DB::table('student_subjects')->insert([
-                'student_id'=> $data->id,
+                'student_id'=> $student->id,
                 'subject_id' => $value
             ]);  
             return redirect()->route('students.create')->with('status','student data update successfully');    
         }
+        
+        return redirect()->route('students.create')->with('success','Post created successfully.');
     }
 
     /**
@@ -84,11 +88,19 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
         
-        $student = student::find($id);
         $subjects = Subject::all();
+        // $users = User::whereHas(
+        //     'roles', function($q){
+        //         $q->where('name', 'care-manager');
+        //     }
+        // )->get();
+        // $student = Student::with('subjects')->get();
+        // dd($subjects)
+  
+    
         return view ('student.edit' , compact('student'), compact('subjects'));
 
         
@@ -104,25 +116,25 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         //
-        $request->validate([
-            'studentname'=>'required',
-            'rollno' => 'required|unique:students,rollno',
-            'department' => 'required'
-            ]);
+        // $request->validate([
+        //     'studentname'=>'required',
+        //     'rollno' => 'required|unique:students',
+        //     'department' => 'required'
+        //     ]);
        
             
-        $data=Student::create([
-            'studentname' => $request->studentname,
-            'rollno' => $request->rollno,
-            'department' => $request->department
-        ]);
-        foreach($request->subject as $item=>$value){
-            DB::table('student_subjects')->insert([
-                'student_id'=> $data->id,
-                'subject_id' => $value
-            ]);    
-            
-        }
+        // $data=Student::create([
+        //     'studentname' => $request->studentname,
+        //     'rollno' => $request->rollno,
+        //     'department' => $request->department
+        // ]);
+        // foreach($request->subject as $item=>$value){
+        //     DB::table('student_subjects')->update([
+        //         'student_id'=> $data->id,
+        //         'subject_id' => $value
+        //     ]);     
+        // }
+        // return redirect()->route('students.create')->with('success','Post created successfully.');
     }
 
     /**
@@ -131,11 +143,11 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
         //
-        $student = student::find($id);
-        DB::table('student_subjects')->where('id', $id)->delete();
+        $student->delete();
+        return redirect()->route('students.index')->with('success', 'A Student has been deleted');
     
     }
 }
