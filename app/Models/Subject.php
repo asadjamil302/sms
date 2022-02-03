@@ -11,7 +11,10 @@ class Subject extends Model
     protected $guarded = [
        'id'
     ];
-    
+    public function students(){
+        return $this->belongsToMany(Student::class,'student_subjects');
+                    
+    }
 
 
 }
