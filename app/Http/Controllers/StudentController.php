@@ -58,17 +58,18 @@ class StudentController extends Controller
         ]);
       //  $data['slug'] = Str::slug($request->studentname);
        
-       
+       //dd($request);
         $student = Student::create($data);
-        foreach($request->subject as $item=>$value){
+        foreach($request->subject as $value){
             DB::table('student_subjects')->insert([
                 'student_id'=> $student->id,
                 'subject_id' => $value
             ]);  
-            return redirect()->route('students.create')->with('success','Post created successfully.');   
+            
+            
         }
         
-        
+        return redirect()->route('students.create')->with('success','Post created successfully.');   
     }
 
     /**
@@ -90,10 +91,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        
         $subjects = Subject::all();
+        $student['slug'] = Str::slug($student->username);
         $student_subjects = $student->subjects->pluck('id')->toArray();
-        return view ('student.edit' ,compact('subjects','student_subjects'));
+        return view ('student.edit' ,compact('student','subjects','student_subjects'));
 
         
     } 
@@ -107,26 +108,29 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
-        // $request->validate([
-        //     'studentname'=>'required',
-        //     'rollno' => 'required|unique:students',
-        //     'department' => 'required'
-        //     ]);
-       
+
+      
+
+        $student->studentname = $request->studentname;
+        $student->rollno = $request->rollno;
+        $student->department = $request->department;
+        $student->save();
+        $student->subjects()->detach();
+        foreach($request->subject as $value){
+            DB::table('student_subjects')->insert([
+                'student_id'=> $student->id,
+                'subject_id' => $value
+            ]);
+        }
+      //  $student->subject = $request-> subject;
+//        $student->subject->id as $value;
+        // foreach($request->subject->id as $value){
             
-        // $data=Student::create([
-        //     'studentname' => $request->studentname,
-        //     'rollno' => $request->rollno,
-        //     'department' => $request->department
-        // ]);
-        // foreach($request->subject as $item=>$value){
-        //     DB::table('student_subjects')->update([
-        //         'student_id'=> $data->id,
-        //         'subject_id' => $value
-        //     ]);     
+        // $student->subjects()->attach($value);
+        
         // }
-        // return redirect()->route('students.create')->with('success','Post created successfully.');
+         return redirect()->route('students.index')->with('success', 'A Student has been deleted'); 
+
     }
 
     /**
@@ -137,9 +141,12 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
-        $student->delete();
+        
+        
+       //$student->subjects()->detach();
+       $student->delete();
         return redirect()->route('students.index')->with('success', 'A Student has been deleted');
-    
+        
+        
     }
 }

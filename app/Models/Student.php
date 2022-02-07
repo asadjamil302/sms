@@ -18,4 +18,6 @@ class Student extends Model
         return $this->belongsToMany(Subject::class,'student_subjects');
                     
     }
+   
+    
 }

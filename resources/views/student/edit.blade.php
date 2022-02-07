@@ -14,24 +14,24 @@
   
   <h6 class="form-group col-md-6 alert alert-success">{{session('status')}}</h6>
   @endif
-  <form action="{{route('students.store')}}" method="post">
+  <form action="{{route('students.update', $student)}}" method="post">
+    @method('patch')
       @csrf
      
-      
     <div class="form-colume">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Student Name</label>
-        <input type="name" name="studentname" value="" required class="form-control" id="inputEmail4" placeholder="Enter your name">
+        <input type="name" name="studentname" value="{{$student->studentname}}"required class="form-control" id="inputEmail4" placeholder="Enter your name">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Roll no</label>
-        <input type="text" name="rollno" value=""  required class="form-control" id="inputPassword4" placeholder="Enter your rollno">
+        <input type="text" name="rollno" value="{{$student->rollno}}"  required class="form-control" id="inputPassword4" placeholder="Enter your rollno">
       </div>
   
    
       <div class="form-group col-md-6">
       <label for="inputState">department</label>
-        <select id="inputState"name="department" value="" required class="form-control">
+        <select id="inputState"name="department" value="{{$student->department}}"  required class="form-control">
           <option selected>computer science</option>
           <option>software engineering</option>
           <option>information technology</option>
@@ -42,7 +42,7 @@
         <select  id="inputState" name="subject[]" class="form-control multiple-select"  multiple>
 
             @foreach ($subjects as $item)
-            <option {{in_array($item->id, $student_subjects) ? 'selected':''}}> {{$item->subject_name}}</option>
+            <option value="{{$item->id}}" {{in_array($item->id, $student_subjects) ? 'selected':''}}> {{$item->subject_name}}</option>
             @endforeach
             
         
