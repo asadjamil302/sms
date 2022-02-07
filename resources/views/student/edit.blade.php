@@ -14,8 +14,8 @@
   
   <h6 class="form-group col-md-6 alert alert-success">{{session('status')}}</h6>
   @endif
-  <form action="{{route('students.update', $student)}}" method="post">
-    @method('patch')
+  <form action="{{route('student.update', $student)}}" method="post">
+     @method('patch') 
       @csrf
      
     <div class="form-colume">

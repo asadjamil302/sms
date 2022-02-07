@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::with('subjects')->get();
+        $students = Student::all();
         return view('student.index', compact('students'));
         
     }
@@ -56,10 +56,16 @@ class StudentController extends Controller
             'rollno' => 'required|unique:students',
             'department' => 'required'
         ]);
-      //  $data['slug'] = Str::slug($request->studentname);
-       
+        
+     // $slug = Str::slug('studentname');
        //dd($request);
-        $student = Student::create($data);
+       // $student = Student::create($data);
+        $student    = new student();
+        $student->studentname  = $request->studentname;
+        $student->slug = Str::slug($request->studentname);
+        $student->rollno  = $request->rollno;
+        $student->department  = $request->department;
+        $student->save();
         foreach($request->subject as $value){
             DB::table('student_subjects')->insert([
                 'student_id'=> $student->id,
@@ -91,9 +97,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $subjects = Subject::all();
-        $student['slug'] = Str::slug($student->username);
+        
+        $subjects = Subject::all();       
         $student_subjects = $student->subjects->pluck('id')->toArray();
+
         return view ('student.edit' ,compact('student','subjects','student_subjects'));
 
         

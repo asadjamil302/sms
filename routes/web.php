@@ -23,10 +23,16 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('signin', signinController::class);
-Route::resource('students', StudentController::class);
+Route::resource('student', StudentController::class, [ 'parameters' => [
+    'student' => 'student:slug'
+]]);
 Route::resource('subjects', SubjectController::class );
-Route::resource('clazzs', ClazzController::class);
+
+Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
+    'clazzs' => 'clazzs:slug'
+]]);
 Route::resource('sections', SectionController::class);
 Route::resource('signups', SignupController::class);
 Auth::routes();
