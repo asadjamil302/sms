@@ -33,14 +33,13 @@
               
               
                 <td><a class="btn btn-primary" href="{{route('students.edit', $item->id)}}">Edit</a></td>
-                <form action="{{ route('students.destroy',$item->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf 
-                    @method('DELETE')
-                        <td>
-                            <button class="btn btn-primary" type="submit">Delete</button>
-                
-                        </td>
+                <form action="{{route('students.destroy', $item->id)}}" method="post">
+                 @method('delete')
+                 @csrf
+                    <td> <button class="btn btn-primary" type="submit">Delete</button></td>   
                 </form>
+                       
+              
                 </tr>
             @endforeach
             

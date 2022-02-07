@@ -38,11 +38,12 @@
       </div>
       <div class="select2.js form-group col-md-6">
         <label for="inputState">Select subject</label>
-        <select  id="inputState"name="subject[]" required class="form-control multiple-select" multiple>
+        <select  id="inputState" name="subject[]" required class="form-control multiple-select" multiple>
         @foreach($subjects as $item)
           <option value="{{$item->id}}">{{$item->subject_name}}</option>
          @endforeach
         </select>
+        
       </div>
       <div class="form-group col-md-6 ">
     <button type="submit" class="btn btn-primary">Submit</button>
