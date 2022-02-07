@@ -15,6 +15,7 @@ class CreateClazzsTable extends Migration
     {
         Schema::create('clazzs', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('class_name');
             $table->timestamps();
         });

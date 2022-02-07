@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Subject;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Subset;
 
 class SubjectController extends Controller
 {
@@ -45,19 +47,19 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+       $data = $request->validate([
             'subject_name' => 'required',
             'subject_code' => 'required|unique:subjects',
         ]);
+       
+        $data['slug'] = Str::slug($request->subject_name);
+       
+       
+        $subjects = Subject::create($data);
 
-        subject::create([
-                            'subject_name' => $request->subject_name,
-                            // 'slug' ＝＞$slug 
-                            'subject_code' => $request->subject_code,
-                        ]);
+        // dd($request);
 
-
-        // subject::create($request->all());
+       
 
         return redirect()->route('subjects.create')->with('success','Post created successfully.');
     }
@@ -79,14 +81,13 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
         //
-        $subjects = Subject::findOrFail($id);
-    
-        // dd($subjects);
-        return view('subject.edit', compact('subjects'));
-      
+        
+        // $subjects = Subject::all();
+        return view('subject.edit', compact('subject'));
+           
 
     }
 
@@ -97,16 +98,20 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject)
     {
         //
-       $data= $request->validate([
+        $data = $request->validate([
             'subject_name' => 'required',
             'subject_code' => 'required|unique:subjects',
         ]);
-        Subject::whereId($id)->update($data);
+       
+        $data['slug'] = Str::slug($request->subject_name);
+       
+        $data = $request->all();
+        $subject->update($data);
+        // $subjects = Subject::create($data);
 
-        return redirect()->route('subjects/')->with('success','Post updated successfully.');
     }
 
     /**
@@ -115,11 +120,10 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
         //
-        $subjects = Subject::findOrFail($id);
-        $subjects->delete();
-        return redirect()->route('subjects.create')->with('success','Post deleted successfully.');
     }
+    
+
 }

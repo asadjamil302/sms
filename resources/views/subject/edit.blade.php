@@ -7,18 +7,19 @@
      <!-- Page Content -->
      <div class="content">
      
-        <form action="{{route('subjects.update', $item->id)}}" method="POST">
+        <form action="{{route('subjects.update', $subject->)}}" method="POST">
+           @method('PUT')
             @csrf
             <div class="container" width="80%">
                     <div class="form-colume">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Subject Name</label>
-                            <input type="name" name="subject_name" value="{{$item->subject_name}}" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
+                            <input type="name" name="subject_name" value="{{$subject->subject_name}}" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
                         </div>
                     
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Subject code</label>
-                            <input type="text" name="subject_code" value="{{$item->subject_code}}" class="form-control" id="inputPassword4" placeholder="Enter the Subject Code">
+                            <input type="text" name="subject_code" value="{{$subject->subject_code}}" class="form-control" id="inputPassword4" placeholder="Enter the Subject Code">
                         </div>
 
                         <div class="form-group col-md-6 ">

@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClazzController;
-use App\Http\Controllers\SignupController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -34,7 +32,7 @@ Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'
 ]]);
 Route::resource('sections', SectionController::class);
-Route::resource('signups', SignupController::class);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
