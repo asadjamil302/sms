@@ -97,6 +97,17 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         //
+        $data = $request->validate([
+            'subject_name' => 'required',
+            'subject_code' => 'required|unique:subjects',
+        ]);
+       
+        $data['slug'] = Str::slug($request->subject_name);
+       
+        $data = $request->all();
+        $subject->update($data);
+        // $subjects = Subject::create($data);
+
     }
 
     /**
@@ -109,4 +120,6 @@ class SubjectController extends Controller
     {
         //
     }
+    
+
 }
