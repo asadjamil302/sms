@@ -6,6 +6,7 @@
 @section('content')
      <!-- Page Content -->
      <body>
+         <div class="content">
      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -46,6 +47,7 @@
             
         </tbody>
     </table>
+</div>
      </body>
     <!-- END Page Content -->
 @endsection
