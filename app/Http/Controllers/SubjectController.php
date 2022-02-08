@@ -111,7 +111,7 @@ class SubjectController extends Controller
         $data = $request->all();
         $subject->update($data);
         // $subjects = Subject::create($data);
-
+        return redirect()->route('subject.index')->with('success', 'A Student has been updated');
     }
 
     /**

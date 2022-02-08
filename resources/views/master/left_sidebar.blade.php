@@ -39,14 +39,14 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32" src="assets/media/avatars/avatar15.jpg" alt="">
+                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
             </div>
             <!-- END Visible only in mini mode -->
 
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
                 <a class="img-link" href="be_pages_generic_profile.html">
-                    <img class="img-avatar" src="assets/media/avatars/avatar15.jpg" alt="">
+                    <img class="img-avatar" src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
@@ -73,7 +73,7 @@
         <div class="content-side content-side-full">
             <ul class="nav-main">
                 <li>
-                    <a class="active" href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    <a class="active" href="{{route('home')}}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                 </li>
                 
                        
@@ -98,7 +98,7 @@
                             <a href="{{route('subject.index')}}">subjects</a>
                         </li>
                         <li>
-                            <a href="{{route('student.create')}}">create subject</a>
+                            <a href="{{route('subject.create')}}">create subject</a>
                         </li>
                     
                     </ul>

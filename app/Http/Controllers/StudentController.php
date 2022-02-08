@@ -139,7 +139,7 @@ class StudentController extends Controller
         // $student->subjects()->attach($value);
         
         // }
-         return redirect()->route('student.index')->with('success', 'A Student has been deleted'); 
+         return redirect()->route('student.index')->with('success', 'A Student has been updated'); 
 
     }
 
