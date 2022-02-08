@@ -21,7 +21,7 @@
             <tbody>
                 @foreach ($subjects as $item)
                 <tr>
-                    <td>{{$item->slug}}</td>
+                    <td>{{$item->id}}</td>
                     <td>{{$item->subject_name}}</td>
                     <td>{{$item->subject_code}}</td>
                     <td>{{$item->status}}</td>
