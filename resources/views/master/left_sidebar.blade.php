@@ -39,7 +39,7 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
+                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/rana.jpg')}}" alt="">
             </div>
             <!-- END Visible only in mini mode -->
 
