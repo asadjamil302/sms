@@ -10,10 +10,16 @@
 
 @section('content')
 <div class="container" width="80%">
-  @if (session('status'))
   
-  <h6 class="form-group col-md-6 alert alert-success">{{session('status')}}</h6>
-  @endif
+    @if (session('success'))
+              <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+                  {{ session('success') }}
+              </div>
+    @endif
+
   <form action="{{route('student.update', $student)}}" method="post">
      @method('patch') 
       @csrf

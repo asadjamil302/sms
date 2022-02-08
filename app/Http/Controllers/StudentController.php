@@ -78,7 +78,7 @@ class StudentController extends Controller
             
         }
         
-        return redirect()->route('student.create')->with('success','Post created successfully.');   
+        return redirect()->back()->with('success','Post created successfully.');   
     }
 
     /**
@@ -139,7 +139,7 @@ class StudentController extends Controller
         // $student->subjects()->attach($value);
         
         // }
-         return redirect()->route('student.index')->with('success', 'A Student has been deleted'); 
+         return redirect()->route('student.index')->with('success', 'record has been updated'); 
 
     }
 
@@ -155,7 +155,7 @@ class StudentController extends Controller
         
        //$student->subjects()->detach();
        $student->delete();
-        return redirect()->route('student.index')->with('success', 'A Student has been deleted');
+        return redirect()->route('student.index')->with('success', 'record has been deleted');
         
         
     }

@@ -61,7 +61,7 @@ class SubjectController extends Controller
 
        
 
-        return back()->with('success','Post created successfully.');
+        return back()->with('success','record created successfully.');
     }
 
     /**
@@ -111,7 +111,7 @@ class SubjectController extends Controller
         $data = $request->all();
         $subject->update($data);
         // $subjects = Subject::create($data);
-
+        return back()->with('success','Post updated successfully.');
     }
 
     /**

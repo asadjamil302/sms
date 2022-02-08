@@ -21,7 +21,14 @@
                     <div class="form-colume">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Subject Name</label>
-                            <input type="name" name="subject_name" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
+                            <input type="text" name="subject_name" class="form-control @if($errors->has('subject_name')) is-invalid @endif"  id="inputEmail4" placeholder="Enter the Subject Name">
+                           
+                            @if($errors->has('subject_name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('subject_name') }}</strong>
+                                </span>
+                            
+                            @endif
                         </div>
                     
                         <div class="form-group col-md-6">

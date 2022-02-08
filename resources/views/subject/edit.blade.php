@@ -6,7 +6,14 @@
 @section('content')
      <!-- Page Content -->
      <div class="content">
-     
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ session('success') }}
+            </div>
+        @endif
         <form action="{{route('subject.update', $subject)}}" method="POST">
            @method('PUT')
             @csrf

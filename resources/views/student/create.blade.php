@@ -10,27 +10,52 @@
 
 @section('content')
 <div class="container" width="80%">
-  @if (session('status'))
   
-  <h6 class="form-group col-md-6 alert alert-success">{{session('status')}}</h6>
-  @endif
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        {{ session('success') }}
+    </div>
+    @endif
+
   <form action="{{route('student.store')}}" method="post">
       @csrf
       
     <div class="form-colume">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Student Name</label>
-        <input type="name" name="studentname" required class="form-control" id="inputEmail4" placeholder="Enter your name">
+        <input type="name" name="studentname"  class="form-control @if($errors->has('studentname')) is-invalid @endif" id="inputEmail4" placeholder="Enter your name">
+        @if($errors->has('studentname'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('studentname') }}</strong>
+        </span>
+        @endif
+      
+      
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Roll no</label>
-        <input type="text" name="rollno" required class="form-control" id="inputPassword4" placeholder="Enter your rollno">
+        <input type="text" name="rollno"  class="form-control @if($errors->has('rollno')) is-invalid @endif" id="inputPassword4" placeholder="Enter your rollno">
+        @if($errors->has('rollno'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('rollno') }}</strong>
+        </span>
+        @endif
       </div>
   
    
       <div class="form-group col-md-6">
       <label for="inputState">department</label>
-        <select id="inputState"name="department" required class="form-control">
+        <select id="inputState"name="department"  class="form-control @if($errors->has('department')) is-invalid @endif">
+          
+          @if($errors->has('department'))
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $errors->first('department') }}</strong>
+          </span>
+          @endif
+
           <option selected>computer science</option>
           <option>software engineering</option>
           <option>information technology</option>
@@ -38,7 +63,12 @@
       </div>
       <div class="select2.js form-group col-md-6">
         <label for="inputState">Select subject</label>
-        <select  id="inputState" name="subject[]" required class="form-control multiple-select" multiple>
+        <select  id="inputState" name="subject[]"  class="form-control @if($errors->has('subject[]')) is-invalid @endif multiple-select " multiple>
+          @if($errors->has('subject[]'))
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $errors->first('subject[]') }}</strong>
+          </span>
+          @endif
         @foreach($subjects as $item)
           <option value="{{$item->id}}">{{$item->subject_name}}</option>
          @endforeach
