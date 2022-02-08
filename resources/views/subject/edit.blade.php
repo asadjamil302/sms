@@ -7,7 +7,7 @@
      <!-- Page Content -->
      <div class="content">
      
-        <form action="{{route('subjects.update', $subject->)}}" method="POST">
+        <form action="{{route('subject.update', $subject)}}" method="POST">
            @method('PUT')
             @csrf
             <div class="container" width="80%">
