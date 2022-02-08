@@ -11,41 +11,45 @@
             <tr>
                 <th>Student Name</th>
                 <th>Student Rollno</th>
-                <th>Department</th>
-                <th>Subjects</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Attendance</th>
             </tr>
         </thead>
 
         <tbody>
+
+            <form action="" method="post">
+                @csrf
+                
             @foreach ($students as $item)
-            
             <tr>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
-                <td>{{$item->department}}</td>
-                <td> 
-                     @foreach ($item->subjects as $sub)
-                    <span class="badge badge-primary">{{$sub->subject_name}}</span>
-                    @endforeach
-
+               
+                <td>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-success active">
+                      <input type="radio" name="attendance" id="option1" value="present" autocomplete="off" checked> present
+                    </label>
+                    <label class="btn btn-outline-danger">
+                      <input type="radio" name="attendance" id="option2" value="absent" autocomplete="off"> absent
+                    </label>
                 </td>
+                  </div> 
+                  
+               
+                </form>  
               
-              
-                <td><a class="btn btn-primary" href="{{route('student.edit', $item)}}">Edit</a></td>
-                <form action="{{route('student.destroy', $item)}}" method="post">
-                 @method('delete')
-                 @csrf
-                    <td> <button class="btn btn-primary" type="submit">Delete</button></td>   
-                </form>
-                       
-              
-                </tr>
+            </tr>
             @endforeach
-            
+             
+        
         </tbody>
     </table>
+    <tr>
+            <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </tr>
      </body>
     <!-- END Page Content -->
 @endsection

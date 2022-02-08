@@ -28,6 +28,9 @@ class StudentController extends Controller
         
     }
 
+ 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -75,7 +78,7 @@ class StudentController extends Controller
             
         }
         
-        return redirect()->route('students.create')->with('success','Post created successfully.');   
+        return redirect()->route('student.create')->with('success','Post created successfully.');   
     }
 
     /**
@@ -136,7 +139,7 @@ class StudentController extends Controller
         // $student->subjects()->attach($value);
         
         // }
-         return redirect()->route('students.index')->with('success', 'A Student has been deleted'); 
+         return redirect()->route('student.index')->with('success', 'A Student has been deleted'); 
 
     }
 
@@ -152,7 +155,7 @@ class StudentController extends Controller
         
        //$student->subjects()->detach();
        $student->delete();
-        return redirect()->route('students.index')->with('success', 'A Student has been deleted');
+        return redirect()->route('student.index')->with('success', 'A Student has been deleted');
         
         
     }
