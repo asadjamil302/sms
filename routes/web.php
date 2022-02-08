@@ -26,7 +26,7 @@ Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
-Route::resource('subjects', SubjectController::class );
+Route::resource('subject', SubjectController::class );
 
 Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'
