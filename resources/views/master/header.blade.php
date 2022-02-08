@@ -111,35 +111,35 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
                     <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
-                    <a class="dropdown-item" href="be_pages_generic_profile.html">
+                    <a class="dropdown-item" href="{{url('/assets/media/photos/3.jpg')}}">
                         <i class="si si-user mr-5"></i> Profile
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                        <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
-                        <span class="badge badge-primary">3</span>
-                    </a>
-                    <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                        <i class="si si-note mr-5"></i> Invoices
-                    </a>
+                   
+                  
                     <div class="dropdown-divider"></div>
 
-                    <!-- Toggle Side Overlay -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                        <i class="si si-wrench mr-5"></i> Settings
-                    </a>
-                    <!-- END Side Overlay -->
-
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="op_auth_signin.html">
+                    {{-- <a class="dropdown-item" href="op_auth_signin.html">
                         <i class="si si-logout mr-5"></i> Sign Out
-                    </a>
+                    </a> --}}
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+
+                        <i class="si si-logout mr-5"></i>
+                 </a>
+
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                     @csrf
+                 </form>
+
                 </div>
             </div>
             <!-- END User Dropdown -->
 
             <!-- Notifications -->
-            <div class="btn-group" role="group">
+            {{-- <div class="btn-group" role="group">
                 <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-flag"></i>
                     <span class="badge badge-primary badge-pill">5</span>
@@ -208,7 +208,7 @@
                         <i class="fa fa-flag mr-5"></i> View All
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <!-- END Notifications -->
 
             <!-- Toggle Side Overlay -->

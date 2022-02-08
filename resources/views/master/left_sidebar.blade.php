@@ -39,18 +39,18 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/rana.jpg')}}" alt="">
+                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/3.jpg')}}" alt="">
             </div>
             <!-- END Visible only in mini mode -->
 
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
                 <a class="img-link" href="be_pages_generic_profile.html">
-                    <img class="img-avatar" src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
+                    <img class="img-avatar" src="{{url('/assets/media/photos/3.jpg')}}" alt="">
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="be_pages_generic_profile.html">J. Smith</a>
+                        <a class="link-effect text-dual-primary-dark font-size-sm font-w600 text-uppercase" href="{{url('home')}}">J. Smith</a>
                     </li>
                     <li class="list-inline-item">
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
