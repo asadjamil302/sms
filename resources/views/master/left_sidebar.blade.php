@@ -58,8 +58,10 @@
                             <i class="si si-drop"></i>
                         </a>
                     </li>
+                    
                     <li class="list-inline-item">
                         <a class="link-effect text-dual-primary-dark" href="op_auth_signin.html">
+                            
                             <i class="si si-logout"></i>
                         </a>
                     </li>
