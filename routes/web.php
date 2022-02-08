@@ -29,7 +29,10 @@ Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
-Route::resource('subject', SubjectController::class );
+
+Route::resource('subject', SubjectController::class, [ 'parameters' => [
+    'subject' => 'subject:slug'
+]]);
 
 Route::resource('attendance', AttendanceController::class );
 

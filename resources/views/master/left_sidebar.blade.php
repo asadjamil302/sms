@@ -60,10 +60,18 @@
                     </li>
                     
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark" href="op_auth_signin.html">
-                            
-                            <i class="si si-logout"></i>
+                        <a class="link-effect text-dual-primary-dark" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            {{ __('') }}
+
+                            <i class="si si-logout mr-5"></i>
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                     </li>
                 </ul>
             </div>
