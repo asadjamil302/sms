@@ -1,4 +1,3 @@
-
 @extends('master.app')
 @section('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -11,32 +10,32 @@
             <tr>
                 <th>Student Name</th>
                 <th>Student Rollno</th>
-                <th>Department</th>
-                <th>Subjects</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Present</th>
             </tr>
         </thead>
 
         <tbody>
+            {{-- <form action="{{route('student.destroy', $item)}}" method="post"> --}}
+                @csrf
             @foreach ($students as $item)
             <tr>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
-                <td>{{$item->department}}</td>
-                <td> 
-                     @foreach ($item->subjects as $sub)
-                    <span class="badge badge-primary">{{$sub->subject_name}}</span>
-                    @endforeach
+               
+                        <td>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        
+                            <label class="btn btn-outline-success active">
+                            <input type="radio" name="attendance" id="option1" autocomplete="off" checked> Present
+                            </label>
+                        
+                            <label class="btn btn-outline-danger">
+                            <input type="radio" name="attendance" id="option2" autocomplete="off"> Pbsent
+                            </label>
+                        
+                        </td>
+                  </div> 
 
-                </td>
-                <td><a class="btn btn-primary" href="{{route('student.edit', $item)}}">Edit</a></td>
-                <form action="{{route('student.destroy', $item)}}" method="post">
-                 @method('delete')
-                 @csrf
-                    <td> <button class="btn btn-primary" type="submit">Delete</button></td> 
-              
-                  
                 </form>
                        
               
@@ -53,14 +52,3 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,12 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClazzController;
+use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\SigninController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
+Route::resource('attendance', AttendanceController::class);
+
 Route::resource('subjects', SubjectController::class );
 
 Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
