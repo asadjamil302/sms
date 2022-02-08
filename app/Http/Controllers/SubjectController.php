@@ -61,7 +61,7 @@ class SubjectController extends Controller
 
        
 
-        return redirect()->route('subjects.create')->with('success','Post created successfully.');
+        return back()->with('success','Post created successfully.');
     }
 
     /**

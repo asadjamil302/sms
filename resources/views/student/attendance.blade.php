@@ -10,40 +10,45 @@
             <tr>
                 <th>Student Name</th>
                 <th>Student Rollno</th>
-                <th>Present</th>
+                <th>Attendance</th>
             </tr>
         </thead>
 
         <tbody>
-            {{-- <form action="{{route('student.destroy', $item)}}" method="post"> --}}
+
+            <form action="" method="post">
                 @csrf
+                
             @foreach ($students as $item)
             <tr>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
                
-                        <td>
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        
-                            <label class="btn btn-outline-success active">
-                            <input type="radio" name="attendance" id="option1" autocomplete="off" checked> Present
-                            </label>
-                        
-                            <label class="btn btn-outline-danger">
-                            <input type="radio" name="attendance" id="option2" autocomplete="off"> Pbsent
-                            </label>
-                        
-                        </td>
+                <td>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-success active">
+                      <input type="radio" name="attendance" id="option1" value="present" autocomplete="off" checked> present
+                    </label>
+                    <label class="btn btn-outline-danger">
+                      <input type="radio" name="attendance" id="option2" value="absent" autocomplete="off"> absent
+                    </label>
+                </td>
                   </div> 
-
-                </form>
-                       
+                  
+               
+                </form>  
               
-                </tr>
+            </tr>
             @endforeach
-            
+             
+        
         </tbody>
     </table>
+    <tr>
+            <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </tr>
      </body>
     <!-- END Page Content -->
 @endsection
@@ -52,3 +57,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 @endsection
+
+
+
+
+
+
+
+
+
+
+

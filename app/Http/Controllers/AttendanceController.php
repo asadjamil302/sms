@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\attendance;
 
 use App\Models\Student;
-use App\Models\Attendance;
+use App\Models\Subject;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AttendanceController extends Controller
 {
@@ -28,6 +32,7 @@ class AttendanceController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -39,15 +44,16 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Attendance  $attendance
+     * @param  \App\Models\attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function show(Attendance $attendance)
+    public function show(attendance $attendance)
     {
         //
     }
@@ -55,10 +61,10 @@ class AttendanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Attendance  $attendance
+     * @param  \App\Models\attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Attendance $attendance)
+    public function edit(attendance $attendance)
     {
         //
     }
@@ -67,10 +73,10 @@ class AttendanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Attendance  $attendance
+     * @param  \App\Models\attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Attendance $attendance)
+    public function update(Request $request, attendance $attendance)
     {
         //
     }
@@ -78,10 +84,10 @@ class AttendanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Attendance  $attendance
+     * @param  \App\Models\attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Attendance $attendance)
+    public function destroy(attendance $attendance)
     {
         //
     }

@@ -28,6 +28,9 @@ class StudentController extends Controller
         
     }
 
+ 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -152,7 +155,7 @@ class StudentController extends Controller
         
        //$student->subjects()->detach();
        $student->delete();
-        return redirect()->route('students.index')->with('success', 'A Student has been deleted');
+        return redirect()->route('student.index')->with('success', 'A Student has been deleted');
         
         
     }

@@ -2,11 +2,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClazzController;
-use App\Http\Controllers\SigninController;
+
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\SigninController;
 use App\Http\Controllers\AttendanceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +29,9 @@ Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
-Route::resource('attendance', AttendanceController::class);
+Route::resource('subject', SubjectController::class );
 
-Route::resource('subjects', SubjectController::class );
+Route::resource('attendance', AttendanceController::class );
 
 Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'
@@ -42,4 +44,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

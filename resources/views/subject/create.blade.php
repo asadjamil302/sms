@@ -5,8 +5,17 @@
 @endsection
 @section('content')
      <!-- Page Content -->
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            {{ session('success') }}
+        </div>
+    @endif
+       
      <div class="content">
-        <form action="{{route('subjects.store')}}" method="POST">
+        <form action="{{route('subject.store')}}" method="POST">
             @csrf
             <div class="container" width="80%">
                     <div class="form-colume">
@@ -17,7 +26,12 @@
                     
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Subject code</label>
-                            <input type="text" name="subject_code" class="form-control" id="inputPassword4" placeholder="Enter the Subject Code">
+                            <input type="text" name="subject_code" class="form-control @if($errors->has('subject_code')) is-invalid @endif" id="inputPassword4" placeholder="Enter the Subject Code">
+                            @if($errors->has('subject_code'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('subject_code') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group col-md-6 ">

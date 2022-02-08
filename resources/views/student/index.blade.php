@@ -20,6 +20,7 @@
 
         <tbody>
             @foreach ($students as $item)
+            
             <tr>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
