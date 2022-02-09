@@ -5,9 +5,11 @@
 @section('content')
      <!-- Page Content -->
      <body>
+         <div class="content">
      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Student Name</th>
                 <th>Student Rollno</th>
                 <th>Attendance</th>
@@ -16,27 +18,24 @@
 
         <tbody>
 
-            <form action="" method="post">
+            <form action="{{route('attendance.store')}}" type="submit" method="post">
                 @csrf
                 
             @foreach ($students as $item)
             <tr>
+                <td>{{$item->id}}</td>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
-               
+
                 <td>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-success active">
-                      <input type="radio" name="attendance" id="option1" value="present" autocomplete="off" checked> present
-                    </label>
-                    <label class="btn btn-outline-danger">
-                      <input type="radio" name="attendance" id="option2" value="absent" autocomplete="off"> absent
-                    </label>
-                </td>
+                    <input type="button" class="btn btn-success " value="present" id="{{$item->id}}" onClick="changetext(this.id)" ></td>
+                    {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}
+                
+                
                   </div> 
                   
                
-                </form>  
+                 
               
             </tr>
             @endforeach
@@ -44,11 +43,31 @@
         
         </tbody>
     </table>
+</div>
     <tr>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-7" style="float: right;">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
+</form> 
     </tr>
+    
+    <script>
+        function changetext(abc) {
+           
+        //      var elem = document.getElementById("{{$item->id}}");    
+        //    {
+            
+            if (abc.value=="present")
+                { 
+                    abc.value = "absent";
+                }
+            else
+             {
+                abc.value = "present";
+             }
+        
+        }
+        </script>
      </body>
     <!-- END Page Content -->
 @endsection
