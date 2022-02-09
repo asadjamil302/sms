@@ -103,15 +103,17 @@ class SubjectController extends Controller
         //
         $data = $request->validate([
             'subject_name' => 'required',
-            'subject_code' => 'required|unique:subjects',
+            'subject_code' => 'required|unique:subjects,subject_code',
         ]);
+
        
-        $data['slug'] = Str::slug($request->subject_name);
+       
+        // $data['slug'] = Str::slug($request->subject_name);
        
         $data = $request->all();
         $subject->update($data);
         // $subjects = Subject::create($data);
-        return back()->with('success','Post updated successfully.');
+        return back()->with('success','record updated successfully.');
     }
 
     /**
@@ -123,6 +125,8 @@ class SubjectController extends Controller
     public function destroy(Subject $subject)
     {
         //
+        $subject->delete();
+        return redirect()->route('subject.index')->with('success', 'record has been deleted');
     }
     
 
