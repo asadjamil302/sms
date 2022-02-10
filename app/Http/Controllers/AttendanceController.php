@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\attendance;
-
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
@@ -48,8 +48,11 @@ class AttendanceController extends Controller
         $data = $request->validate([
             'studentname' => 'required',
             'rollno' => 'required',
+            'date'=>'required',
             'attendance' => 'required',
         ]);
+        // $today = Carbon::today();
+
         $attendance = attendance::create($data);
         // $attendance	  = new attendance();
         // $attendance->studentname  = $request->studentname;

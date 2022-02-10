@@ -10,6 +10,7 @@
                 <th>ID</th>
                 <th>Student Name</th>
                 <th>Student Rollno</th>
+                <th>Date</th>
                 <th>Attendance</th>
             </tr>
         </thead>
@@ -21,10 +22,11 @@
                 
             @foreach ($students as $item)
             <tr>
+
                 <td>{{$item->id}}</td>
                 <td>{{$item->studentname}}</td>
                 <td>{{$item->rollno}}</td>
-
+                <td>{{$item->date}}</td>
                 <td>
                     <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)" ></td>
                     {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}
