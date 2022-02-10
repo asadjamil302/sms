@@ -1,4 +1,5 @@
 @extends('master.app')
+
 @section('content')
      <!-- Page Content -->
      <body>
@@ -47,25 +48,53 @@
     </div>
 </form> 
     </tr>
-    <script>
 
-        function mark_attendance(value,id){
-            var val = "";
-            if(value == "Present"){
-                $('#'+id).removeClass('btn-success');
 
-                $('#'+id).addClass('btn-danger');
-                val = $('#'+id).val('Absent');
-            } else{
-                val = $('#'+id).val('Present');
 
+
+        <script>
+
+            function mark_attendance(value,id){
+                var val = "";
+                if(value == "Present"){
+                    $.ajax({
+                        type: 'get',
+                        url: "{{route('present')}}",
+                        data:{
+                            id:id
+
+                        },                   
+                        success: function(response){ 
+                            
+                        },
+                        error: function() { 
+                        
+                        }
+                    
+                    });
+                    
+                    $('#'+id).removeClass('btn-success');
+
+                    $('#'+id).addClass('btn-danger');
+                    val = $('#'+id).val('Absent');
+                } else{
+                    val = $('#'+id).val('Present');
+
+                }
+                //alert(val);
             }
-            //alert(val);
-        }
- 
-</script>
+    
+        </script>
 
+        <script>
+          
 
-     </body>
+        </script>
+        
+    
+    
+    </body>
     <!-- END Page Content -->
 @endsection
+
+

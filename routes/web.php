@@ -34,7 +34,13 @@ Route::resource('subject', SubjectController::class, [ 'parameters' => [
     'subject' => 'subject:slug'
 ]]);
 
+// for attenndance
+Route::get('present',[ AttendanceController::class, 'present'])->name('present');
+Route::get('absent', [AttendanceController::class, 'absent' ])->name('absent');
 Route::resource('attendance', AttendanceController::class );
+
+
+
 
 Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'

@@ -109,4 +109,21 @@ class AttendanceController extends Controller
     {
         //
     }
+
+
+
+    public function present(Request $request)
+    {
+        //
+        dd($request->id);
+        $students = Student::all();
+        return view('student.attendance', compact('students'));
+    }
+    public function absent(Request $request)
+    {
+        dd($request);
+        //
+        $students = Student::all();
+        return view('student.attendance', compact('students'));
+    }
 }
