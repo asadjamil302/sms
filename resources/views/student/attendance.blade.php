@@ -1,7 +1,4 @@
 @extends('master.app')
-@section('css')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-@endsection
 @section('content')
      <!-- Page Content -->
      <body>
@@ -28,7 +25,7 @@
                 <td>{{$item->rollno}}</td>
 
                 <td>
-                    <input type="button" class="btn btn-success " value="present" id="{{$item->id}}" onClick="changetext(this.id)" ></td>
+                    <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)" ></td>
                     {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}
                 
                 
@@ -50,31 +47,41 @@
     </div>
 </form> 
     </tr>
-    
     <script>
+
+        function mark_attendance(value,id){
+            var val = "";
+            if(value == "Present"){
+                $('#'+id).removeClass('btn-success');
+
+                $('#'+id).addClass('btn-danger');
+                val = $('#'+id).val('Absent');
+            } else{
+                val = $('#'+id).val('Present');
+
+            }
+            //alert(val);
+        }
+ 
+</script>
+
+    {{-- <script>
         function changetext(abc) {
-           
-        //      var elem = document.getElementById("{{$item->id}}");    
-        //    {
-            
-            if (abc.value=="present")
+    
+     var elem = document.getElementById("{{$item->id}}").innerHTML=();
+            if (elem.value=="present")
                 { 
-                    abc.value = "absent";
+                    elem.value = "absent";
                 }
             else
              {
-                abc.value = "present";
+                elem.value = "present";
              }
         
         }
-        </script>
+        </script> --}}
      </body>
     <!-- END Page Content -->
-@endsection
-@section('script')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 @endsection
 
 
