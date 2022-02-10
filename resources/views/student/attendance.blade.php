@@ -1,8 +1,4 @@
 @extends('master.app')
-@section('css')
-
-
-@endsection
 @section('content')
      <!-- Page Content -->
      <body>
@@ -29,7 +25,7 @@
                 <td>{{$item->rollno}}</td>
 
                 <td>
-                    <input type="button" class="btn btn-success " value="present" name="present" id="{{$item->id}}" onclick="test(this.id)" ></td>
+                    <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)" ></td>
                     {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}
                 
                 
@@ -51,53 +47,25 @@
     </div>
 </form> 
     </tr>
-    
+    <script>
+
+        function mark_attendance(value,id){
+            var val = "";
+            if(value == "Present"){
+                $('#'+id).removeClass('btn-success');
+
+                $('#'+id).addClass('btn-danger');
+                val = $('#'+id).val('Absent');
+            } else{
+                val = $('#'+id).val('Present');
+
+            }
+            //alert(val);
+        }
+ 
+</script>
+
 
      </body>
     <!-- END Page Content -->
 @endsection
-@section('script')
-
-<script>
-    $(document).ready(function(){
-        alert('as');   
-    });
-
-function test(id){
-    alert(id);
-    //  $.ajax({
-    //             url: "/attendance",
-    //             type:"POST",
-    //             data:{
-    //                     id:{{$item->id}},
-    //                     studentname:{{$item->studentname}},
-    //                     rollno:{{$item->rollno}},
-                
-    //                     },
-    //             success:function(response){
-    //                 console.log(response);
-    //                 if(response) {
-    //                 $('.success').text(response.success);
-    //                 $("#ajaxform")[0].reset();
-    //                 }
-    //             },
-    //             error: function(error) {
-    //             console.log(error);
-    //             }
-    //             });
-        
-        }
-  </script>
-
-@endsection
-
-
-
-
-
-
-
-
-
-
-
