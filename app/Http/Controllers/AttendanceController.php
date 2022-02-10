@@ -50,7 +50,8 @@ class AttendanceController extends Controller
             'rollno' => 'required',
             'attendance' => 'required',
         ]);
-        $attendance = attendance::create($data);
+        dd($data);
+         $attendance = attendance::create($data);
         // $attendance	  = new attendance();
         // $attendance->studentname  = $request->studentname;
         // $attendance->rollno  = $request->rollno;
@@ -59,7 +60,7 @@ class AttendanceController extends Controller
 
         // dd($request);
 
-       
+      
 
         return back()->route('student.index')->with('success','record created successfully.');
         
