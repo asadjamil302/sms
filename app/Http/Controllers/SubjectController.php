@@ -51,11 +51,21 @@ class SubjectController extends Controller
             'subject_name' => 'required',
             'subject_code' => 'required|unique:subjects',
         ]);
+        
+        // $previous = Subject::where('slug',Str::slug($request->subject_name))->exists();
        
+        // dd($previous);
+
         $data['slug'] = Str::slug($request->subject_name);
        
-       
-        $subjects = Subject::create($data);
+        // $subject = Subject::create($data);
+        // dd($subject);
+
+        // if($previous) {
+        //     $subject->slug = Str::slug($request->subject_name);
+        // } else {
+        //     $subject->slug = Str::slug($request->subject_name).'-'.$subject->id;
+        // }
 
         // dd($request);
 
