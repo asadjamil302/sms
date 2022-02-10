@@ -1,16 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\attendance;
 
-use App\Models\Student;
-use App\Models\Subject;
-use Illuminate\Support\Facades\DB;
+use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class AttendanceController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +15,6 @@ class AttendanceController extends Controller
     public function index()
     {
         //
-        $students = Student::all();
-        return view('student.attendance', compact('students'));
     }
 
     /**
@@ -32,8 +25,6 @@ class AttendanceController extends Controller
     public function create()
     {
         //
-        
-        
     }
 
     /**
@@ -44,19 +35,16 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-       
-
-      
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\attendance  $attendance
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(attendance $attendance)
+    public function show(Project $project)
     {
         //
     }
@@ -64,10 +52,10 @@ class AttendanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\attendance  $attendance
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(attendance $attendance)
+    public function edit(Project $project)
     {
         //
     }
@@ -76,10 +64,10 @@ class AttendanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\attendance  $attendance
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, attendance $attendance)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -87,29 +75,11 @@ class AttendanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\attendance  $attendance
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(attendance $attendance)
+    public function destroy(Project $project)
     {
         //
-    }
-
-
-
-    public function present(Request $request)
-    {
-        
-          //dd($request);
-        $attendance = attendance::create([
-            
-        ]);
-    }
-    public function absent(Request $request)
-    {
-        dd($request->id);
-        //
-        $students = Student::all();
-        return view('student.attendance', compact('students'));
     }
 }

@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendance extends Model
+class Project extends Model
 {
     use HasFactory;
     protected $guarded = [
         'id'
-    ];
-    public function students(){
-        return $this->belongsToMany(students::class, 'attendance');
-                    
-    }
+     ];
 }
