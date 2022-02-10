@@ -33,6 +33,7 @@ class AttendanceController extends Controller
     {
         //
         
+        
     }
 
     /**
@@ -44,6 +45,23 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'studentname' => 'required',
+            'rollno' => 'required',
+            'attendance' => 'required',
+        ]);
+        $attendance = attendance::create($data);
+        // $attendance	  = new attendance();
+        // $attendance->studentname  = $request->studentname;
+        // $attendance->rollno  = $request->rollno;
+        // $attendance->attendance  = $request->attendance;
+        // $attendance->save();
+
+        // dd($request);
+
+       
+
+        return back()->route('student.index')->with('success','record created successfully.');
         
     }
 
