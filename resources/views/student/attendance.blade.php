@@ -67,7 +67,10 @@
 
                         },                   
                         success: function(response){ 
-                            
+                            $('#'+id).removeClass('btn-success');
+
+                            $('#'+id).addClass('btn-danger');
+                            val = $('#'+id).val('Absent');
                         },
                         error: function() { 
                         
@@ -75,10 +78,7 @@
                     
                     });
                     
-                    $('#'+id).removeClass('btn-success');
 
-                    $('#'+id).addClass('btn-danger');
-                    val = $('#'+id).val('Absent');
                 } else{
                     val = $('#'+id).val('Present');
 

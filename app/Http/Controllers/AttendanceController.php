@@ -50,7 +50,7 @@ class AttendanceController extends Controller
             'rollno' => 'required',
             'date'=>'required',
             'attendance' => 'required',
-        ]);
+        ]);    
         // $today = Carbon::today();
 
         $attendance = attendance::create($data);
@@ -117,16 +117,19 @@ class AttendanceController extends Controller
 
     public function present(Request $request)
     {
-        //
-        dd($request->id);
-        $students = Student::all();
-        return view('student.attendance', compact('students'));
+    
+        // $today = Carbon::today();
+
+        $attendance = attendance::create([
+
+            'student_id'  => $request->id,
+            'date' => Carbon::now()->toDateString(),
+            'attendance' => '1'
+        ]);
+        return response('done');
     }
     public function absent(Request $request)
     {
-        dd($request);
-        //
-        $students = Student::all();
-        return view('student.attendance', compact('students'));
+        
     }
 }
