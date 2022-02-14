@@ -11,6 +11,12 @@ class Attendance extends Model
     protected $guarded = [
         'id'
     ];
+
+
+    public function students(){
+        return $this->belongsToMany(Student::class,'attendance_history');
+                    
+    }
 }
     
 

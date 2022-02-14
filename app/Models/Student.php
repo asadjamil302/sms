@@ -18,8 +18,8 @@ class Student extends Model
         return $this->belongsToMany(Subject::class,'student_subjects');
                     
     }
-    public function attendance(){
-        return $this->hasMany(Attendance::class);
+    public function attendances(){
+        return $this->hasOne(Attendance::class,'attendance_history');
                     
     }
    
