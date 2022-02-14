@@ -24,8 +24,12 @@
                     <td>{{$item->rollno}}</td>
                     <td>{{$item->date}}</td>
                     <td>
+                        @php
+                            $today = Carbon\Carbon::now()->toDateString();
+                        @endphp
                         <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
                     </td>
+                    
                         {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}                  
                 
                     

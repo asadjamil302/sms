@@ -6,6 +6,7 @@ use App\Models\attendance;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,8 +21,21 @@ class AttendanceController extends Controller
     public function index()
     {
         //
-        $students = Student::all();
-    
+        // $students = Student::whereHas(
+        //     'attendance', function($q){
+        //         // $q->latest('date');
+        //     }
+        // )->get();
+
+        // $students = DB::table('students')
+        //     ->leftjoin('attendances', 'attendances.student_id', '=', 'students.id')
+        //     ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname' )
+        //     ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname')
+        //     ->where('attendances.student_id', null)
+        //     ->get();
+
+            // dd($students);
+            $students = Student::all(); 
         return view('student.attendance', compact('students'));
     }
 
@@ -113,7 +127,7 @@ class AttendanceController extends Controller
         [
             'attendance' => $request->attendance,
         ]);
-        return response('done');
+        return response('data[]');
     }
     public function absent(Request $request)
     {

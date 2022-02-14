@@ -19,8 +19,8 @@ class Student extends Model
                     
     }
     public function attendance(){
-        return $this->hasMany(Attendance::class);
-                    
+
+        return $this->belongsToMany(attendance::class,'attendance_history');                    
     }
    
     
