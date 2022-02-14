@@ -58,7 +58,7 @@ class SubjectController extends Controller
 
         $data['slug'] = Str::slug($request->subject_name);
        
-        // $subject = Subject::create($data);
+        $subject = Subject::create($data);
         // dd($subject);
 
         // if($previous) {

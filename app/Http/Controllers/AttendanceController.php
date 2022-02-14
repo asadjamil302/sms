@@ -6,6 +6,7 @@ use App\Models\attendance;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -126,10 +127,16 @@ class AttendanceController extends Controller
             'date' => Carbon::now()->toDateString(),
             'attendance' => '1'
         ]);
-        return response('done');
+        return response('data[]');
     }
     public function absent(Request $request)
     {
-        
+        $attendance = attendance::updateOrCreate([
+
+            'student_id'  => $request->id,
+            'date' => Carbon::now()->toDateString(),
+            'attendance' => '0'
+        ]);
+        return response('done');
     }
 }

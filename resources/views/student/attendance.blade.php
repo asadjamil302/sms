@@ -63,7 +63,11 @@
                         type: 'get',
                         url: "{{route('present')}}",
                         data:{
-                            id:id
+                            id:id,
+                            // student_id:student_id,
+                            // date:date,
+                            // attendance:attendance
+
 
                         },                   
                         success: function(response){ 
@@ -80,7 +84,34 @@
                     
 
                 } else{
-                    val = $('#'+id).val('Present');
+
+                    $.ajax({
+                        type: 'get',
+                        url: "{{route('absent')}}",
+                        data:{
+                            id:id
+                            // student_id:student_id,
+                            // date:date,
+                            // attendance:attendance
+                        },                   
+                        success: function(response){ 
+                            
+                            $('#'+id).removeClass('btn-danger');
+                            $('#'+id).addClass('btn-success');
+
+                            val = $('#'+id).val('Present');
+                        },
+                        error: function() { 
+                        
+                        }
+                    
+                    });
+
+
+
+
+
+
 
                 }
                 //alert(val);
