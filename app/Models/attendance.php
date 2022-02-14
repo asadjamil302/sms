@@ -11,8 +11,6 @@ class Attendance extends Model
     protected $guarded = [
         'id'
     ];
-    public function students(){
-        return $this->belongsToMany(students::class, 'attendance');
-                    
-    }
 }
+    
+

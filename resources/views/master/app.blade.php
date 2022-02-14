@@ -158,6 +158,6 @@
         -->
         <script src="{{asset('assets/js/codebase.app.min.js')}}"></script>
         
-
+        @yield('script')
     </body>
 </html>

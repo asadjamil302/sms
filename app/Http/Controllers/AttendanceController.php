@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\attendance;
-
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +44,24 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+        //
+        $data = $request->validate([
+            'studentname' => 'required',
+            'rollno' => 'required',
+            'date'=>'required',
+            'attendance' => 'required',
+        ]);    
+        // $today = Carbon::today();
+
+        $attendance = attendance::create($data);
+        // $attendance	  = new attendance();
+        // $attendance->studentname  = $request->studentname;
+        // $attendance->rollno  = $request->rollno;
+        // $attendance->attendance  = $request->attendance;
+        // $attendance->save();
+
+        // dd($request);
+
        
 
       
@@ -99,17 +117,33 @@ class AttendanceController extends Controller
 
     public function present(Request $request)
     {
-        
-          //dd($request);
-        $attendance = attendance::create([
-            
+    
+        // $today = Carbon::today();
+
+        $attendance = attendance::updateOrCreate([
+
+            'student_id'  => $request->id,
+            'date' => Carbon::now()->toDateString(),
+        ],
+        [
+            'attendance' => $request->attendance,
         ]);
+        return response('done');
     }
     public function absent(Request $request)
     {
-        dd($request->id);
-        //
-        $students = Student::all();
-        return view('student.attendance', compact('students'));
+        
+        $attendance = attendance::updateOrCreate(
+            [
+            
+                'student_id'  => $request->id,
+                'date' => Carbon::now()->toDateString(),        
+            ],
+            [
+                'attendance' => $request->attendance,
+            ]
+        );
+        return response('done');
+        
     }
 }
