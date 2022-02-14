@@ -17,7 +17,7 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
         <meta property="og:image" content="">
-
+         
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
@@ -158,6 +158,6 @@
         -->
         <script src="{{asset('assets/js/codebase.app.min.js')}}"></script>
         
-
+        @yield('script')
     </body>
 </html>

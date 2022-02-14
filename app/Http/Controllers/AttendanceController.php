@@ -65,7 +65,7 @@ class AttendanceController extends Controller
 
        
 
-        return back()->route('student.index')->with('success','record created successfully.');
+      
         
     }
 
@@ -121,22 +121,30 @@ class AttendanceController extends Controller
     
         // $today = Carbon::today();
 
-        $attendance = attendance::create([
+        $attendance = attendance::updateOrCreate([
 
             'student_id'  => $request->id,
             'date' => Carbon::now()->toDateString(),
-            'attendance' => '1'
+        ],
+        [
+            'attendance' => $request->attendance,
         ]);
         return response('data[]');
     }
     public function absent(Request $request)
     {
-        $attendance = attendance::updateOrCreate([
-
-            'student_id'  => $request->id,
-            'date' => Carbon::now()->toDateString(),
-            'attendance' => '0'
-        ]);
+        
+        $attendance = attendance::updateOrCreate(
+            [
+            
+                'student_id'  => $request->id,
+                'date' => Carbon::now()->toDateString(),        
+            ],
+            [
+                'attendance' => $request->attendance,
+            ]
+        );
         return response('done');
+        
     }
 }

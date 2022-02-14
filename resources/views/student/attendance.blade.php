@@ -2,132 +2,95 @@
 
 @section('content')
      <!-- Page Content -->
-     <body>
-         <div class="content">
-     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Student Name</th>
-                <th>Student Rollno</th>
-                <th>Date</th>
-                <th>Attendance</th>
-            </tr>
-        </thead>
+    <div class="content">
+        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Student Rollno</th>
+                    <th>Date</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
+                    
+                @foreach ($students as $item)
+                <tr>
 
-            <form action="{{route('attendance.store')}}" type="submit" method="post">
-                @csrf
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->studentname}}</td>
+                    <td>{{$item->rollno}}</td>
+                    <td>{{$item->date}}</td>
+                    <td>
+                        <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                    </td>
+                        {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}                  
                 
-            @foreach ($students as $item)
-            <tr>
-
-                <td>{{$item->id}}</td>
-                <td>{{$item->studentname}}</td>
-                <td>{{$item->rollno}}</td>
-                <td>{{$item->date}}</td>
-                <td>
-                    <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)" ></td>
-                    {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}
+                    
                 
+                </tr>
+                @endforeach
                 
-                  </div> 
-                  
-               
-                 
-              
-            </tr>
-            @endforeach
-             
-        
-        </tbody>
-    </table>
-</div>
-    <tr>
-            <div class="form-group col-md-7" style="float: right;">
-        <button type="submit" class="btn btn-primary">Submit</button>
+            
+            </tbody>
+        </table>
     </div>
-</form> 
-    </tr>
-
-
-
-
-        <script>
-
-            function mark_attendance(value,id){
-                var val = "";
-                if(value == "Present"){
-                    $.ajax({
-                        type: 'get',
-                        url: "{{route('present')}}",
-                        data:{
-                            id:id,
-                            // student_id:student_id,
-                            // date:date,
-                            // attendance:attendance
-
-
-                        },                   
-                        success: function(response){ 
-                            $('#'+id).removeClass('btn-success');
-
-                            $('#'+id).addClass('btn-danger');
-                            val = $('#'+id).val('Absent');
-                        },
-                        error: function() { 
-                        
-                        }
-                    
-                    });
-                    
-
-                } else{
-
-                    $.ajax({
-                        type: 'get',
-                        url: "{{route('absent')}}",
-                        data:{
-                            id:id
-                            // student_id:student_id,
-                            // date:date,
-                            // attendance:attendance
-                        },                   
-                        success: function(response){ 
-                            
-                            $('#'+id).removeClass('btn-danger');
-                            $('#'+id).addClass('btn-success');
-
-                            val = $('#'+id).val('Present');
-                        },
-                        error: function() { 
-                        
-                        }
-                    
-                    });
-
-
-
-
-
-
-
-                }
-                //alert(val);
-            }
-    
-        </script>
-
-        <script>
-          
-
-        </script>
-        
-    
-    
-    </body>
-    <!-- END Page Content -->
 @endsection
+@section('script')
+    <script>
 
+        function mark_attendance(value,id){
+            var val = "";
+            if(value == "Present"){
+                $.ajax({
+                    type: 'get',
+                    url: "{{route('present')}}",
+                    data:{
+                        id: id,
+                        attendance: '1',
+                    },                   
+                    success: function(response){ 
+                        $('#'+id).removeClass('btn-success');
 
+                        $('#'+id).addClass('btn-danger');
+                        val = $('#'+id).val('Absent');
+                    },
+                    error: function() { 
+                    
+                    }
+                
+                });
+                
+
+            } 
+            else{
+                $.ajax({
+                    type: 'get',
+                    url: "{{route('absent')}}",
+                    data:{
+                        id:id,
+                        attendance: '0',
+                    },                   
+                    success: function(response){ 
+                        $('#'+id).removeClass('btn-danger');
+
+                        $('#'+id).addClass('btn-success');
+                        val = $('#'+id).val('Present');
+                    },
+                    error: function() { 
+                    
+                    }
+                
+                });
+                
+
+            }
+        
+            //alert(val);
+        }
+
+    </script>
+<!-- END Page Content -->
+@endsection

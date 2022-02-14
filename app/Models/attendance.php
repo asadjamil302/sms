@@ -11,5 +11,6 @@ class Attendance extends Model
     protected $guarded = [
         'id'
     ];
-    
 }
+    
+
