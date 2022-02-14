@@ -21,6 +21,7 @@ class AttendanceController extends Controller
     {
         //
         $students = Student::all();
+    
         return view('student.attendance', compact('students'));
     }
 
@@ -44,27 +45,6 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $data = $request->validate([
-            'studentname' => 'required',
-            'rollno' => 'required',
-            'date'=>'required',
-            'attendance' => 'required',
-        ]);    
-        // $today = Carbon::today();
-
-        $attendance = attendance::create($data);
-        // $attendance	  = new attendance();
-        // $attendance->studentname  = $request->studentname;
-        // $attendance->rollno  = $request->rollno;
-        // $attendance->attendance  = $request->attendance;
-        // $attendance->save();
-
-        // dd($request);
-
-       
-
-      
         
     }
 
@@ -77,6 +57,11 @@ class AttendanceController extends Controller
     public function show(attendance $attendance)
     {
         //
+        // $users = DB::table('attendance')
+        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'users.id', '=', 'orders.user_id')
+        //     ->select('users.*', 'contacts.phone', 'orders.price')
+        //     ->get();
     }
 
     /**
