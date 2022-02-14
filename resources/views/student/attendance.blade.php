@@ -22,14 +22,19 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->studentname}}</td>
                     <td>{{$item->rollno}}</td>
-                    <td>{{ Carbon\Carbon::parse($item->attendance->date)->diffForHumans() }}</td>
+                    <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
+
+           
                     <td>
                  
-                        @if ($item->attendance->student_id)
+                        @if ($item->attendance()->exists())
                             <input type="button" class="btn {{$item->attendance->attendance == '1' ? 'btn-danger' : 'btn-success'}}" value="{{$item->attendance->attendance == '1' ? 'Absent' : 'Present'}}" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                        @else
+                        <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+
                         @endif
-                    </td>
-                    
+                    </td> 
+
                         {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}                  
                 
                     

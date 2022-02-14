@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\attendance;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
-use Dflydev\DotAccessData\Data;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use App\Models\attendance;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Dflydev\DotAccessData\Data;
+use App\Models\AttendanceHistory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class AttendanceController extends Controller
 {
@@ -141,11 +142,21 @@ class AttendanceController extends Controller
         $attendance = attendance::updateOrCreate([
 
             'student_id'  => $request->id,
+        ],
+        [
+            'attendance' => $request->attendance,
+            'date' => Carbon::now()->toDateString(),
+        ]);
+
+        AttendanceHistory::updateOrCreate([
+
+            'student_id'  => $request->id,
             'date' => Carbon::now()->toDateString(),
         ],
         [
             'attendance' => $request->attendance,
         ]);
+
         return response('data[]');
     }
     public function absent(Request $request)
@@ -164,4 +175,14 @@ class AttendanceController extends Controller
         return response('done');
         
     }
+
+
+    // history
+
+
+    
+
+
+
+
 }
