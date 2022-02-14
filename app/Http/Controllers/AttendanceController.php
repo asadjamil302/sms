@@ -21,20 +21,23 @@ class AttendanceController extends Controller
     public function index()
     {
         //
+      
+        $students = Student::with('attendance')->get();
+
         // $students = Student::whereHas(
         //     'attendance', function($q){
         //         // $q->latest('date');
         //     }
         // )->get();
+        
+        // $students = DB::table('students')
+        //     ->leftjoin('attendances', 'attendances.student_id', '=', 'students.id')
+        //     ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname' )
+        //     ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname')
+        //     ->where('attendances.student_id', null)
+        //     ->get();
 
-        $students = DB::table('students')
-            ->leftjoin('attendances', 'attendances.student_id', '=', 'students.id')
-            ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname' )
-            ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname')
-            ->where('attendances.student_id', null)
-            ->get();
-
-            dd($students);
+            // dd($students);
 
         return view('student.attendance', compact('students'));
     }

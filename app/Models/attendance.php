@@ -13,8 +13,8 @@ class Attendance extends Model
     ];
 
 
-    public function students(){
-        return $this->belongsToMany(Student::class,'attendance_history');
+    public function student(){
+        return $this->belongsToMany(Student::class,'student_id');
                     
     }
 }

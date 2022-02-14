@@ -18,8 +18,10 @@ class studentSeeder extends Seeder
     public function run()
     {
         //
+        $name = Str::random(10);
         DB::table('students')->insert([
-            'studentname' => Str::random(10),
+            'studentname' => $name,
+            'slug' => Str::slug($name),
             'rollno' => Str::random(10),
             'department' => Str::random(10),
             

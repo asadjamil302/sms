@@ -22,12 +22,12 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->studentname}}</td>
                     <td>{{$item->rollno}}</td>
-                    <td>{{$item->date}}</td>
+                    <td>{{ Carbon\Carbon::parse($item->attendance->date)->diffForHumans() }}</td>
                     <td>
-                        @php
-                            $today = Carbon\Carbon::now()->toDateString();
-                        @endphp
-                        <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                 
+                        @if ($item->attendance->student_id)
+                            <input type="button" class="btn {{$item->attendance->attendance == '1' ? 'btn-danger' : 'btn-success'}}" value="{{$item->attendance->attendance == '1' ? 'Absent' : 'Present'}}" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                        @endif
                     </td>
                     
                         {{-- <td><a class="btn btn-primary" href="{{$item)}}">Edit</a></td> --}}                  
