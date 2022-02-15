@@ -26,16 +26,20 @@
 
            
                     <td>
-
-                        @php
-                            $today = \Carbon\Carbon::now()->toDateString();
-                        @endphp
-
-                 
+                      @php
+                          $today = \Carbon\Carbon::now()->toDateString();
+                      @endphp   
+                                           
                         @if ($item->attendance()->exists())
-                            <input type="button" class="btn {{$item->attendance->attendance == '1' ? 'btn-danger' : 'btn-success'}}" value="{{$item->attendance->attendance == '1' ? 'Absent' : 'Present'}}" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+
+                            @if ($item->attendance->date == $today)
+                                <input type="button" class="btn {{$item->attendance->attendance == '1' ? 'btn-danger' : 'btn-success'}}" value="{{$item->attendance->attendance == '1' ? 'Absent' : 'Present'}}" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                            @else
+                            
+                                <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                            @endif
                         @else
-                        <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
+                            <input type="button" class="btn btn-success" value="Present" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
 
                         @endif
                     </td> 

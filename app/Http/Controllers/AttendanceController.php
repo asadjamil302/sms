@@ -39,7 +39,6 @@ class AttendanceController extends Controller
         //     ->get();
 
             // dd($students);
-
         return view('student.attendance', compact('students'));
     }
 
@@ -96,6 +95,11 @@ class AttendanceController extends Controller
     public function show(attendance $attendance)
     {
         //
+        // $users = DB::table('attendance')
+        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'users.id', '=', 'orders.user_id')
+        //     ->select('users.*', 'contacts.phone', 'orders.price')
+        //     ->get();
     }
 
     /**
@@ -138,6 +142,7 @@ class AttendanceController extends Controller
     {
     
         // $today = Carbon::today();
+        
 
         $attendance = attendance::updateOrCreate([
 
