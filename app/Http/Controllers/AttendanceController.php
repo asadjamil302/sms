@@ -121,6 +121,7 @@ class AttendanceController extends Controller
     {
     
         // $today = Carbon::today();
+        
 
         $attendance = attendance::updateOrCreate([
 
@@ -155,7 +156,15 @@ class AttendanceController extends Controller
                 'attendance' => $request->attendance,
             ]
         );
-        return response('done');
+        AttendanceHistory::updateOrCreate([
+
+            'student_id'  => $request->id,
+            'date' => Carbon::now()->toDateString(),
+        ],
+        [
+            'attendance' => $request->attendance,
+        ]);
+        return response('data[]');   
         
     }
 

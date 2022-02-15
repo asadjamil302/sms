@@ -26,7 +26,9 @@
 
            
                     <td>
-                 
+                      
+
+                        
                         @if ($item->attendance()->exists())
                             <input type="button" class="btn {{$item->attendance->attendance == '1' ? 'btn-danger' : 'btn-success'}}" value="{{$item->attendance->attendance == '1' ? 'Absent' : 'Present'}}" id="{{$item->id}}" onClick="mark_attendance(this.value, this.id)">
                         @else
