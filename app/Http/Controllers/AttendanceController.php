@@ -62,6 +62,27 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+        //
+        // $data = $request->validate([
+        //     'studentname' => 'required',
+        //     'rollno' => 'required',
+        //     'date'=>'required',
+        //     'attendance' => 'required',
+        // ]);    
+        // $today = Carbon::today();
+
+        // $attendance = attendance::create($data);
+        // $attendance	  = new attendance();
+        // $attendance->studentname  = $request->studentname;
+        // $attendance->rollno  = $request->rollno;
+        // $attendance->attendance  = $request->attendance;
+        // $attendance->save();
+
+        // dd($request);
+
+       
+
+      
         
     }
 
@@ -128,7 +149,7 @@ class AttendanceController extends Controller
             'student_id'  => $request->id,
         ],
         [
-            'attendance' => $request->attendance,
+            'attendance' => '1',
             'date' => Carbon::now()->toDateString(),
         ]);
 
@@ -136,35 +157,37 @@ class AttendanceController extends Controller
 
             'student_id'  => $request->id,
             'date' => Carbon::now()->toDateString(),
+
         ],
         [
-            'attendance' => $request->attendance,
+            'attendance' => '1',
         ]);
 
-        return response('data[]');
+        return response('done');
     }
     public function absent(Request $request)
     {
         
-        $attendance = attendance::updateOrCreate(
-            [
-            
-                'student_id'  => $request->id,
-                'date' => Carbon::now()->toDateString(),        
-            ],
-            [
-                'attendance' => $request->attendance,
-            ]
-        );
+  
+        $attendance = attendance::updateOrCreate([
+
+            'student_id'  => $request->id,
+        ],
+        [
+            'attendance' => '0',
+            'date' => Carbon::now()->toDateString(),
+        ]);
         AttendanceHistory::updateOrCreate([
 
             'student_id'  => $request->id,
             'date' => Carbon::now()->toDateString(),
+
         ],
         [
-            'attendance' => $request->attendance,
+            'attendance' => '0',
         ]);
-        return response('data[]');   
+
+        return response('done');
         
     }
 
