@@ -17,9 +17,11 @@ class AttendanceHistory extends Migration
         Schema::create('attendance_history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
-            $table->foreignId('attendance_id')->constrained('attendance')->onDelete('cascade'); 
+            $table->string('date');
+            $table->string('attendance');
             $table->timestamps();
         });
+
     }
 
     /**
