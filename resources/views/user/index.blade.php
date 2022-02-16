@@ -16,7 +16,7 @@
     @endif
     <div class="block block-themed">
         <div class="block-header bg-corporate-light">
-            <h3 class="block-title">Student</h3>
+            <h3 class="block-title">Users</h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -26,37 +26,33 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Student Name</th>
-                            <th>Rollno</th>
-                            <th>Department</th>
-                            <th>Subjects</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>password</th>
+                            <th>Image</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php
-                            $sr_no = 1;
+                            $us_no = 1;
                         @endphp
-                        @foreach ($students as $item)
+                        @foreach ($users as $item)
             
                         <tr>
-                            <th>{{$sr_no++}}</th>
-                            <td>{{$item->studentname}}</td>
-                            <td>{{$item->rollno}}</td>
-                            <td>{{$item->department}}</td>
-                            <td> 
-                                    @foreach ($item->subjects as $sub)
-                                <span class="badge badge-primary">{{$sub->subject_name}}</span>
-                                @endforeach
-            
-                            </td>
+                            <th>{{$us_no++}}</th>
+                            <td>{{$item->user_name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->password}}</td>
+                            <td><img src="/image/{{ $item->user_image}}" width="20px"></td>
+
                             <td class="text-center">
                                 <div class="btn-group">
 
-                                    <a class="btn btn-warning" href="{{route('student.edit', $item)}}">
+                                    <a class="btn btn-warning" href="{{route('user.edit', $item)}}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <form action="{{route('student.destroy', $item)}}" method="post">
+                                    <form action="{{route('user.destroy', $item)}}" method="post">
                                         @method('delete')
                                         @csrf
                                         <button class="btn btn-danger ml-1" type="submit">

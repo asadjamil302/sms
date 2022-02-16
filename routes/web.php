@@ -1,12 +1,13 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClazzController;
+use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\ClazzController;
+use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\SigninController;
 use App\Http\Controllers\AttendanceController;
 
 
@@ -54,3 +55,8 @@ Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name(
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//for users route
+Route::resource('user', UserController::class);
