@@ -9,7 +9,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AttendanceController;
-
+use Mockery\Generator\Parameter;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,10 @@ use App\Http\Controllers\AttendanceController;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
-Route::resource('signin', signinController::class);
+// Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
@@ -59,4 +60,6 @@ Auth::routes();
 
 
 //for users route
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class, [ 'parameters' => [
+    'user' => 'user:slug'
+]]);

@@ -82,7 +82,7 @@ Preamble
   The licenses for most software are designed to take away your
 freedom to share and change it.  By contrast, the GNU General Public
 License is intended to guarantee your freedom to share and change free
-software-to make sure the software is free for all its users.  This
+software-to make sure the software is free for all its user.  This
 General Public License applies to most of the Free Software
 Foundation's software and to any other program whose authors commit to
 using it.  (Some other Free Software Foundation software is covered by
@@ -372,7 +372,7 @@ Preamble
   The licenses for most software are designed to take away your
 freedom to share and change it.  By contrast, the GNU General Public
 Licenses are intended to guarantee your freedom to share and change
-free software-to make sure the software is free for all its users.
+free software-to make sure the software is free for all its user.
 
   This license, the Lesser General Public License, applies to some
 specially designated software packages-typically libraries-of the
@@ -1203,7 +1203,7 @@ Version 1.1
      EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO
      THIS EXCLUSION AND LIMITATION MAY NOT APPLY TO YOU.
 
-10. U.S. GOVERNMENT END USERS.
+10. U.S. GOVERNMENT END user.
 
      The Covered Code is a "commercial item," as that term is defined in
      48 C.F.R. 2.101 (Oct. 1995), consisting of "commercial computer
@@ -1374,7 +1374,7 @@ binary files as long as those fields can be easily viewed by the user.
 3) No Modified Version of the Font Software may use the Reserved Font
 Name(s) unless explicit written permission is granted by the corresponding
 Copyright Holder. This restriction only applies to the primary font name as
-presented to the users.
+presented to the user.
 
 4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
 Software shall not be used to promote, endorse or advertise any

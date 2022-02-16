@@ -73,7 +73,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -84,9 +84,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
+        return view('user.edit',compact('user'));
     }
 
     /**
@@ -96,9 +97,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
+        $request->validate([
+            'user_name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            //for updation i add image in this crud
+            'user_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            ]);  
+//image crud
+            $input = $request->all();
+  
+        if ($image = $request->file('user_image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['user_image'] = "$profileImage";
+        }else{
+            unset($input['user_image']);
+        }
+          
+        $user->update($input);
+        return redirect()->route('user.index')->with('success', 'record has been updated');
     }
 
     /**
@@ -107,7 +129,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }
