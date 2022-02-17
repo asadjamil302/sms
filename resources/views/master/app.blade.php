@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700&display=swap">
         <link rel="stylesheet" id="css-main" href="{{asset('assets/css/codebase.min.css')}}">
 
+
         @yield('css')
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
