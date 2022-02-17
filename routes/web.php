@@ -8,7 +8,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\AttendanceController;
-
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +50,8 @@ Route::resource('sections', SectionController::class);
 Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('teacher', TeacherController::class);
 
 Auth::routes();
 

@@ -123,7 +123,18 @@
                     
                     </ul>
                 </li>
-                
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('teacher.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Teacher</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{route('teacher.index')}}">Teacher</a>
+                        </li>
+                        <li>
+                            <a href="{{route('teacher.create')}}">create teacher</a>
+                        </li>
+                    
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- END Side Navigation -->
