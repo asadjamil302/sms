@@ -54,7 +54,11 @@ Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('teacher', TeacherController::class);
+// Route::resource('teacher', TeacherController::class);
+Route::resource('teacher', TeacherController::class, [ 'parameters' => [
+    'teacher' => 'teacher:slug'
+]]);
+
 
 Auth::routes();
 
