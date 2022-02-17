@@ -55,8 +55,10 @@ class TeacherController extends Controller
 
         ]);
         
+        
         $teacher = new teacher;
         $teacher->teacher_name =$request->input('teacher_name');
+        $teacher['slug'] = Str::slug($request->teacher_name);
         if($request->hasfile('image'));
            {
                $file = $request->file('image');
@@ -118,9 +120,11 @@ class TeacherController extends Controller
             'designation'=> 'required',
              'image' => 'required'
         ]);
-        
       
+        
+
         $teacher->teacher_name =$request->input('teacher_name');
+        $teacher['slug'] = Str::slug($request->teacher_name);
         if($request->hasfile('image'));
         {
             $destination = 'image/teachers/'.$teacher->image;
