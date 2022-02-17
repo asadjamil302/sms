@@ -1,5 +1,8 @@
 
 @extends('master.app')
+@section('css')
+
+@endsection
 @section('content')
      <!-- Page Content -->
 <div class="content">
@@ -77,6 +80,9 @@
     </div>
 </div>
     
+@endsection
+@section('script')
+
 @endsection
 
 

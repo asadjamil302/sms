@@ -1,14 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClazzController;
+use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\ClazzController;
+use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\SigninController;
 use App\Http\Controllers\AttendanceController;
-
+use App\Http\Controllers\TeacherController;
+use Mockery\Generator\Parameter;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,10 @@ use App\Http\Controllers\AttendanceController;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
-Route::resource('signin', signinController::class);
+// Route::resource('signin', signinController::class);
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
@@ -51,6 +54,19 @@ Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::resource('teacher', TeacherController::class);
+Route::resource('teacher', TeacherController::class, [ 'parameters' => [
+    'teacher' => 'teacher:slug'
+]]);
+
+
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//for users route
+Route::resource('user', UserController::class, [ 'parameters' => [
+    'user' => 'user:slug'
+]]);
