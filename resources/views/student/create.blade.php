@@ -25,12 +25,12 @@
                     <form action="{{route('student.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label" for="studentname">Student Name</label>
+                                <label class="col-lg-3 col-form-label" for="student_name">Student Name</label>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control  @if($errors->has('studentname')) is-invalid @endif"  name="studentname" placeholder="Enter Subject Name">
-                                    @if($errors->has('studentname'))
+                                    <input type="text" class="form-control  @if($errors->has('student_name')) is-invalid @endif"  name="student_name" placeholder="Enter Subject Name">
+                                    @if($errors->has('student_name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('studentname') }}</strong>
+                                        <strong>{{ $errors->first('student_name') }}</strong>
                                     </span>
                                     @endif
                                 </div>

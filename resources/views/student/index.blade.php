@@ -41,7 +41,7 @@
             
                         <tr>
                             <th>{{$sr_no++}}</th>
-                            <td>{{$item->studentname}}</td>
+                            <td>{{$item->student_name}}</td>
                             <td>{{$item->rollno}}</td>
                             <td>{{$item->department}}</td>
                             <td> 

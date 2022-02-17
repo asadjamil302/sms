@@ -55,17 +55,17 @@ class StudentController extends Controller
     {
         //
         $data = $request->validate([
-            'studentname'=>'required',
+            'student_name'=>'required',
             'rollno' => 'required|unique:students',
             'department' => 'required'
         ]);
         
-     // $slug = Str::slug('studentname');
+     // $slug = Str::slug('student_name');
        //dd($request);
        // $student = Student::create($data);
         $student    = new student();
-        $student->studentname  = $request->studentname;
-        $student->slug = Str::slug($request->studentname);
+        $student->student_name  = $request->student_name;
+        $student->slug = Str::slug($request->student_name);
         $student->rollno  = $request->rollno;
         $student->department  = $request->department;
         $student->save();
@@ -121,7 +121,7 @@ class StudentController extends Controller
 
       
 
-        $student->studentname = $request->studentname;
+        $student->student_name = $request->student_name;
         $student->rollno = $request->rollno;
         $student->department = $request->department;
         $student->save();

@@ -27,7 +27,7 @@
     <div class="form-colume">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Student Name</label>
-        <input type="name" name="studentname" value="{{$student->studentname}}"required class="form-control" id="inputEmail4" placeholder="Enter your name">
+        <input type="name" name="student_name" value="{{$student->student_name}}"required class="form-control" id="inputEmail4" placeholder="Enter your name">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Roll no</label>

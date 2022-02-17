@@ -33,8 +33,8 @@ class AttendanceController extends Controller
         
         // $students = DB::table('students')
         //     ->leftjoin('attendances', 'attendances.student_id', '=', 'students.id')
-        //     ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname' )
-        //     ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.studentname')
+        //     ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.student_name' )
+        //     ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.student_name')
         //     ->where('attendances.student_id', null)
         //     ->get();
 
@@ -64,7 +64,7 @@ class AttendanceController extends Controller
     {
         //
         // $data = $request->validate([
-        //     'studentname' => 'required',
+        //     'student_name' => 'required',
         //     'rollno' => 'required',
         //     'date'=>'required',
         //     'attendance' => 'required',
@@ -73,7 +73,7 @@ class AttendanceController extends Controller
 
         // $attendance = attendance::create($data);
         // $attendance	  = new attendance();
-        // $attendance->studentname  = $request->studentname;
+        // $attendance->student_name  = $request->student_name;
         // $attendance->rollno  = $request->rollno;
         // $attendance->attendance  = $request->attendance;
         // $attendance->save();

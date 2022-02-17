@@ -1,0 +1,6 @@
+1) Spatie Package
+    i) Role and Permission
+    ii) Multi User Auth with accordingly views 
+    iii) Make your first Middleware
+2) naming convention
+3) Front-end should be clean

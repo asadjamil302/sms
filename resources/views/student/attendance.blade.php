@@ -20,7 +20,7 @@
                 <tr>
 
                     <td>{{$item->id}}</td>
-                    <td>{{$item->studentname}}</td>
+                    <td>{{$item->student_name}}</td>
                     <td>{{$item->rollno}}</td>
                     <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
 
