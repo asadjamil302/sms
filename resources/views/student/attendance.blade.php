@@ -28,7 +28,8 @@
                     <td>
                       @php
                           $today = \Carbon\Carbon::now()->toDateString();
-                      @endphp                        
+                      @endphp   
+                                           
                         @if ($item->attendance()->exists())
 
                             @if ($item->attendance->date == $today)

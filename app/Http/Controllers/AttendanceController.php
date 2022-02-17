@@ -96,9 +96,9 @@ class AttendanceController extends Controller
     {
         //
         // $users = DB::table('attendance')
-        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
-        //     ->join('orders', 'users.id', '=', 'orders.user_id')
-        //     ->select('users.*', 'contacts.phone', 'orders.price')
+        //     ->join('contacts', 'user.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'user.id', '=', 'orders.user_id')
+        //     ->select('user.*', 'contacts.phone', 'orders.price')
         //     ->get();
     }
 

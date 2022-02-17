@@ -39,14 +39,14 @@
         <div class="content-side content-side-full content-side-user px-10 align-parent">
             <!-- Visible only in mini mode -->
             <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
+                <img class="img-avatar img-avatar32"  src="{{url('/assets/media/photos/5.jpeg')}}" alt="">
             </div>
             <!-- END Visible only in mini mode -->
 
             <!-- Visible only in normal mode -->
             <div class="sidebar-mini-hidden-b text-center">
-                <a class="img-link" href="be_pages_generic_profile.html">
-                    <img class="img-avatar" src="{{url('/assets/media/photos/fahim.jpg')}}" alt="">
+                <a class="img-link" href="{{url('/assets/media/photos/5.jpeg')}}">
+                    <img class="img-avatar" src="{{url('/assets/media/photos/5.jpeg')}}" alt="">
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
@@ -124,6 +124,19 @@
                     </ul>
                 </li>
                 <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Users</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{route('user.index')}}">Users</a>
+                        </li>
+                        <li>
+                            <a href="{{route('user.create')}}">Create Users</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+
+                <li>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('teacher.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Teacher</span></a>
                     <ul>
                         <li>
@@ -131,10 +144,11 @@
                         </li>
                         <li>
                             <a href="{{route('teacher.create')}}">create teacher</a>
-                        </li>
-                    
-                    </ul>
-                </li>
+                
+                <li>
+
+
+
             </ul>
         </div>
         <!-- END Side Navigation -->

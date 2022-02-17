@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -61,7 +62,7 @@ class TeacherController extends Controller
                $file = $request->file('image');
                $extension =$file->getClientOriginalExtension();
                $filename= time().'.'.$extension;
-               $file->move('upload/teachers/', $filename);
+               $file->move('image/teachers/', $filename);
                $teacher->image = $filename;
            }
         $teacher->email =$request->input('email');
@@ -108,7 +109,7 @@ class TeacherController extends Controller
     {
         //
         
-        $data = $request->validate([
+        $input = $request->validate([
             'teacher_name'=>'required',
             'email' => 'required',
             'cnic' => 'required',
@@ -118,22 +119,24 @@ class TeacherController extends Controller
              'image' => 'required'
         ]);
         
-        $teacher = teacher::find($teacher);
+      
         $teacher->teacher_name =$request->input('teacher_name');
         if($request->hasfile('image'));
-           {
-               $destination = 'upload/teachers'.$teacher->image;
-                if(File::exists($destination))
-                {
-                    File::delete($destination);
-                }
-               $file = $request->file('image');
-               $extension =$file->getClientOriginalExtension();
-               $filename= time().'.'.$extension;
-               $file->move('upload/teachers/', $filename);
-               $teacher->image = $filename;
+        {
+            $destination = 'image/teachers/'.$teacher->image;
+             if(File::exists($destination))
+             {
+                 File::delete($destination);
+             }
+            $file = $request->file('image');
+            $extension =$file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('image/teachers/', $filename);
+            $teacher->image = $filename;
 
-           }
+
+        }
+          
         $teacher->email =$request->input('email');
         $teacher->cnic =$request->input('cnic');
         $teacher->phone_no =$request->input('phone_no');
@@ -152,14 +155,15 @@ class TeacherController extends Controller
      */
     public function destroy(teacher $teacher)
     {
-        //
-        $teacher = teacher::find($teacher);
-        $destination= 'upload/teachers'.$teacher->image;
-        if(File::exists($destination))
-        {
-            File::delete($destination);
-        }
+        
+        // $teacher = teacher::find($teacher);
+        // $destination= 'upload/teachers'.$teacher->image;
+        // if(File::exists($destination))
+        // {
+        //     File::delete($destination);
+        // }
         $teacher->delete();
-        return redirect()->back()->with('status','teacher data deleted successfully');
+        return redirect()->route('teacher.index')->with('success', 'record has been deleted');
     }
+        
 }

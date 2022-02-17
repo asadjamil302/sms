@@ -16,7 +16,7 @@
             @foreach($teacher as $item)
             <tr>
             <td class="text-center">
-                <img class="img-avatar img-avatar48" src="{{ asset('upload/teachers/'.$item->image)}}" alt="">
+                <img class="img-avatar img-avatar48" src="{{ asset('image/teachers/'.$item->image)}}" alt="">
             </td>
             <td class="font-w600">{{$item->teacher_name}}</td>
             <td class="d-none d-sm-table-cell">{{$item->email}}</td>
@@ -29,10 +29,13 @@
                     <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
                         <i class="fa fa-pencil" ></i>
                     </button></a>
-                    <a href="{{route('teacher.destroy', $item)}}">
-                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                    <form action="{{route('teacher.destroy', $item)}}" method="post">
+                        @method('delete')
+                        @csrf
+                    <button  class="btn btn-sm btn-secondary" type="submit"  data-toggle="tooltip" title="Delete">
                         <i class="fa fa-times"></i>
-                    </button></a>
+                    </button>
+                </form>
                 </div>
             </td>
         </tr>
