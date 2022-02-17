@@ -157,11 +157,11 @@ class TeacherController extends Controller
     {
         
         // $teacher = teacher::find($teacher);
-        // $destination= 'upload/teachers'.$teacher->image;
-        // if(File::exists($destination))
-        // {
-        //     File::delete($destination);
-        // }
+        $destination= 'image/teachers'.$teacher->image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
         $teacher->delete();
         return redirect()->route('teacher.index')->with('success', 'record has been deleted');
     }

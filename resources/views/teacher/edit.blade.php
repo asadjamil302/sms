@@ -1,7 +1,7 @@
 @extends('master.app')
 
 @section('content')
-<div class="container" width="80%">
+
     @if (session('success'))
     <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -14,13 +14,12 @@
     <!-- Bootstrap Design -->
     <h2 class="content-heading"></h2>
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <!-- Default Elements -->
             <div class="block ">
-                <div class="block-header  bg-gd-dusk">
-                    <h3 class="block-title">Teacher form</h3>
-                    <div class="block-options">
-                        
+                <div class="block block-themed">
+                    <div class="block-header bg-corporate-light">
+                        <h3 class="block-title">teacher Form</h3>
                     </div>
                 </div>
                 <div class="block-content justify-content-center" >
@@ -151,5 +150,5 @@
             <!-- END Default Elements -->
         </div>
     </div> 
-</div>     
+   
 @endsection

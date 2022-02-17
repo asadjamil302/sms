@@ -1,8 +1,14 @@
 @extends('master.app')
 @section('content')
 <div class="content">
+    <div class="block block-themed">
+        <div class="block-header bg-corporate-light">
+            <h3 class="block-title">teacher Form</h3>
+        </div>
+    </div>
 <table class="table table-striped table-vcenter">
     <thead>
+
         <tr>
             <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th>
             <th>Name</th>
@@ -12,6 +18,7 @@
         </tr>
     </thead>
     <tbody>
+
         
             @foreach($teacher as $item)
             <tr>
@@ -25,17 +32,19 @@
             </td>
             <td class="text-center">
                 <div class="btn-group">
-                    <a href="{{route('teacher.edit', $item)}}">
-                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                        <i class="fa fa-pencil" ></i>
-                    </button></a>
+
+                    <a class="btn btn-warning" href="{{route('teacher.edit', $item)}}">
+                        <i class="fa fa-pencil"></i>
+                    </a>
                     <form action="{{route('teacher.destroy', $item)}}" method="post">
                         @method('delete')
                         @csrf
-                    <button  class="btn btn-sm btn-secondary" type="submit"  data-toggle="tooltip" title="Delete">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </form>
+                        <button class="btn btn-danger ml-1" type="submit">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    
+                        
+                    </form>
                 </div>
             </td>
         </tr>
