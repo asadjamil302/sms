@@ -120,7 +120,7 @@ class UserController extends Controller
         }
           
         $user->update($input);
-        return redirect()->route('user.index')->with('success', 'record has been updated');
+        return redirect()->back()->with('success', 'record has been updated');
     }
 
     /**
@@ -132,5 +132,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'record has been deleted');
     }
 }
