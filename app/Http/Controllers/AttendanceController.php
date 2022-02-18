@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
-use App\Models\attendance;
+// use App\Models\attendance;
+use App\Models\Attendance;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
@@ -71,7 +72,7 @@ class AttendanceController extends Controller
         // ]);    
         // $today = Carbon::today();
 
-        // $attendance = attendance::create($data);
+        // $attendance = Attendance::create($data);
         // $attendance	  = new attendance();
         // $attendance->student_name  = $request->student_name;
         // $attendance->rollno  = $request->rollno;
@@ -144,7 +145,7 @@ class AttendanceController extends Controller
         // $today = Carbon::today();
         
 
-        $attendance = attendance::updateOrCreate([
+        $attendance = Attendance::updateOrCreate([
 
             'student_id'  => $request->id,
         ],
@@ -169,7 +170,7 @@ class AttendanceController extends Controller
     {
         
   
-        $attendance = attendance::updateOrCreate([
+        $attendance = Attendance::updateOrCreate([
 
             'student_id'  => $request->id,
         ],

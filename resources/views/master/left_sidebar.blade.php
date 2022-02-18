@@ -90,41 +90,41 @@
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">User Interface</span></li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('student.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">student</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('student.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Student</span></a>
                     <ul>
                         <li>
                             <a href="{{route('student.index')}}">Students</a>
                         </li>
                         <li>
-                            <a href="{{route('student.create')}}">create student</a>
+                            <a href="{{route('student.create')}}">Create Student</a>
                         </li>
                     
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('subject.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">subject</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('subject.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Subject</span></a>
                     <ul>
                         <li>
-                            <a href="{{route('subject.index')}}">subjects</a>
+                            <a href="{{route('subject.index')}}">Subjects</a>
                         </li>
                         <li>
-                            <a href="{{route('subject.create')}}">create subject</a>
+                            <a href="{{route('subject.create')}}">Create Subject</a>
                         </li>
                     
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('attendance.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">attendance</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('attendance.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Attendance</span></a>
                     <ul>
                         <li>
-                            <a href="{{route('attendance.index')}}">attendance</a>
+                            <a href="{{route('attendance.index')}}">Attendance</a>
                         </li>
                         
                     
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Users</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">User</span></a>
                     <ul>
                         <li>
                             <a href="{{route('user.index')}}">Users</a>
@@ -143,7 +143,7 @@
                             <a href="{{route('teacher.index')}}">Teacher</a>
                         </li>
                         <li>
-                            <a href="{{route('teacher.create')}}">create teacher</a>
+                            <a href="{{route('teacher.create')}}">Create Teacher</a>
                 
                 <li>
 

@@ -1,10 +1,13 @@
 
 @extends('master.app')
 @section('css')
+         <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{{asset('assets/js/plugins/datatables/dataTables.bootstrap4.css')}}">
 
 @endsection
 @section('content')
-     <!-- Page Content -->
+<!-- Page Content -->
+
 <div class="content">
     @if (session('success'))
         <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
@@ -14,15 +17,16 @@
             {{ session('success') }}
         </div>
     @endif
+
+    <!-- Dynamic Table Full -->
     <div class="block block-themed">
-        <div class="block-header bg-gd-dusk">
+        <div class="block-header bg-corporate-light">
             <h3 class="block-title">Student</h3>
         </div>
         <div class="block-content block-content-full">
-            <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-            <div class="table-responsive">
+                <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
 
-                <table class="table table-striped table-vcenter">    
+                <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -75,23 +79,18 @@
                         
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
+    <!-- END Dynamic Table Full -->
 </div>
     
 @endsection
 @section('script')
+    <!-- Page JS Plugins -->
+        <script src="{{asset('assets/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+        <!-- Page JS Code -->
+        <script src="{{asset('assets/js/pages/be_tables_datatables.min.js')}}"></script>
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-

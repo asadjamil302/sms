@@ -29,8 +29,8 @@
                         <div class="form-group row" >
                             <label class="col-12"></label>
                             <div class="col-md-6">
-                                <div class="form-control-plaintext">Teacher name</div>
-                                <input type="text" class="form-control @if($errors->has('teacher_name')) is-invalid @endif"  value="{{$teacher->teacher_name}}"   id="example-text-input"   name="teacher_name" placeholder="Teacher Name">
+                                <div class="form-control-plaintext">teacher name</div>
+                                <input type="text" class="form-control @if($errors->has('teacher_name')) is-invalid @endif"  value="{{$teacher->teacher_name}}"   id="example-text-input"   name="teacher_name" placeholder="teacher Name">
                                 @if($errors->has('teacher_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('teacher_name') }}</strong>

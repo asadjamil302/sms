@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class TeacherController extends Controller
     public function index()
     {
         
-        $teacher = teacher::all();
+        $teacher = Teacher::all();
         return view('teacher.index',compact('teacher'));
     }
 
@@ -56,7 +56,7 @@ class TeacherController extends Controller
         ]);
         
         
-        $teacher = new teacher;
+        $teacher = new Teacher();
         $teacher->teacher_name =$request->input('teacher_name');
         $teacher['slug'] = Str::slug($request->teacher_name);
         if($request->hasfile('image'));
@@ -96,7 +96,7 @@ class TeacherController extends Controller
     public function edit(teacher $teacher)
     {
         //
-       // $teacher = teacher::find($teacher);
+       // $teacher = Teacher::find($teacher);
         return view('teacher.edit',compact('teacher'));
     }
 
@@ -147,7 +147,8 @@ class TeacherController extends Controller
         $teacher->salary =$request->input('salary');
         $teacher->designation =$request->input('designation');
            $teacher->update();
-           return redirect()->back()->with('success','teacher updated successfully');
+        //    dd($teacher);
+           return back()->with('success', 'record has been updated');
         
     }
 
@@ -160,7 +161,7 @@ class TeacherController extends Controller
     public function destroy(teacher $teacher)
     {
         
-        // $teacher = teacher::find($teacher);
+        // $teacher = Teacher::find($teacher);
         $destination= 'image/teachers'.$teacher->image;
         if(File::exists($destination))
         {

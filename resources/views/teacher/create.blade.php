@@ -26,8 +26,8 @@
                         <div class="form-group row" >
                             <label class="col-12"></label>
                             <div class="col-md-6">
-                                <div class="form-control-plaintext">Teacher name</div>
-                                <input type="text" class="form-control @if($errors->has('teacher_name')) is-invalid @endif"   id="example-text-input"   name="teacher_name" placeholder="Teacher Name">
+                                <div class="form-control-plaintext">teacher name</div>
+                                <input type="text" class="form-control @if($errors->has('teacher_name')) is-invalid @endif"   id="example-text-input"   name="teacher_name" placeholder="teacher Name">
                                 @if($errors->has('teacher_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('teacher_name') }}</strong>
@@ -36,21 +36,21 @@
                             @endif
                             </div>
                             <div class="row ml-4">
-                            <div class="form-group   ">
-                                <label class="col-12 " for="example-file-input">Enter Your Image</label>
-                                <div class="col-md-6 ">
-                                    <input type="file" class="form-control-file @if($errors->has('image')) is-invalid @endif" id="example-file-input" name="image">
-                                    @if($errors->has('image'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('image') }}</strong>
-                                </span>
-                            
-                            @endif
+                                <div class="form-group">
+                                    <label class="col-12" for="example-file-input">Upload Image</label>
+                                        <div class="col-md-6 ">
+                                            <input type="file" class="form-control-file @if($errors->has('image')) is-invalid @endif" id="example-file-input" name="image">
+                                            @if($errors->has('image'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('image') }}</strong>
+                                                </span>
+                                    
+                                            @endif
+                                        </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                      
+                        
                         <div class="form-group row">
                             <label class="col-12 " for="example-email-input">Email</label>
                             
