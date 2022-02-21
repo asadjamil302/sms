@@ -31,6 +31,7 @@ class TeacherController extends Controller
     {
         //
         
+        
         return view('teacher.create');
     }
 
@@ -50,7 +51,7 @@ class TeacherController extends Controller
             'cnic' => 'required',
             'phone_no'=>'required',
             'salary' => 'required',
-            'image' => 'required',
+           
             'designation'=> 'required'
 
         ]);
@@ -59,7 +60,8 @@ class TeacherController extends Controller
         $teacher = new Teacher();
         $teacher->teacher_name =$request->input('teacher_name');
         $teacher['slug'] = Str::slug($request->teacher_name);
-        if($request->hasfile('image'));
+        
+        if($request->hasfile('image'))
            {
                $file = $request->file('image');
                $extension =$file->getClientOriginalExtension();
@@ -67,6 +69,10 @@ class TeacherController extends Controller
                $file->move('image/teachers/', $filename);
                $teacher->image = $filename;
            }
+         else{
+            // return asset('image/default.png');
+            $teacher->image = ('default.png');
+         }
         $teacher->email =$request->input('email');
         $teacher->cnic =$request->input('cnic');
         $teacher->phone_no =$request->input('phone_no');
