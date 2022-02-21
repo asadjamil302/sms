@@ -39,11 +39,15 @@
                                 <div class="form-group">
                                     <label class="col-12" for="example-file-input">Upload Image</label>
                                         <div class="col-md-6 ">
-                                            <input type="file" class="form-control-file @if($errors->has('image')) is-invalid @endif" id="example-file-input" name="image">
+                                          
+                                            
+                                        <input type="file" class="form-control-file @if($errors->has('image')) is-invalid @endif" id="example-file-input" name="image" >
+                                       
                                             @if($errors->has('image'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('image') }}</strong>
                                                 </span>
+                                                
                                     
                                             @endif
                                         </div>
