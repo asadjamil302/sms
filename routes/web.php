@@ -22,17 +22,18 @@ use Mockery\Generator\Parameter;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//default rote wlecome page
 Route::get('/', function () {
     return view('welcome');
 
 });
 
-// Route::resource('signin', signinController::class);
+//for student
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
 ]]);
 
+//for subject
 Route::resource('subject', SubjectController::class, [ 'parameters' => [
     'subject' => 'subject:slug'
 ]]);
@@ -42,19 +43,18 @@ Route::get('present',[ AttendanceController::class, 'present'])->name('present')
 Route::get('absent', [AttendanceController::class, 'absent' ])->name('absent');
 Route::resource('attendance', AttendanceController::class );
 
-
-
-
+//for classes
 Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'
 ]]);
+//for section
 Route::resource('sections', SectionController::class);
-
+//auth route
 Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::resource('teacher', TeacherController::class);
+//for teacher
 Route::resource('teacher', TeacherController::class, [ 'parameters' => [
     'teacher' => 'teacher:slug'
 ]]);

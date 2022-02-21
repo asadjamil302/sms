@@ -26,7 +26,7 @@
                 <div class="content-header-item">
                     <a class="link-effect font-w700" href="{{route('home')}}">
                         <i class="si si-fire text-primary"></i>
-                        <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
+                        <span class="font-size-xl text-dual-primary-dark">S-M-S_</span><span class="font-size-xl text-primary">System</span>
                     </a>
                 </div>
                 <!-- END Logo -->
@@ -83,14 +83,14 @@
         <div class="content-side content-side-full">
             <ul class="nav-main">
                 <li>
-                    <a class="active" href="{{route('home')}}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    <a class="active" href="{{route('home')}}"><i class="fa fa-dashboard"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                 </li>
                 
                        
                 </li>
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">User Interface</span></li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('student.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Student</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('student.index')}}"><i class="fa fa-graduation-cap"></i><span class="sidebar-mini-hide">Student</span></a>
                     <ul>
                         <li>
                             <a href="{{route('student.index')}}">Students</a>
@@ -102,7 +102,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('subject.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Subject</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('subject.index')}}"><i class="fa fa-book"></i><span class="sidebar-mini-hide">Subject</span></a>
                     <ul>
                         <li>
                             <a href="{{route('subject.index')}}">Subjects</a>
@@ -114,7 +114,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('attendance.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Attendance</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('attendance.index')}}"><i class="fa fa-list-alt"></i><span class="sidebar-mini-hide">Attendance</span></a>
                     <ul>
                         <li>
                             <a href="{{route('attendance.index')}}">Attendance</a>
@@ -124,7 +124,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">User</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-user"></i><span class="sidebar-mini-hide">User</span></a>
                     <ul>
                         <li>
                             <a href="{{route('user.index')}}">Users</a>
@@ -137,7 +137,7 @@
                 </li>
 
                 <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('teacher.index')}}"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Teacher</span></a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('teacher.index')}}"><i class="fa fa-users"></i><span class="sidebar-mini-hide">Teacher</span></a>
                     <ul>
                         <li>
                             <a href="{{route('teacher.index')}}">Teacher</a>

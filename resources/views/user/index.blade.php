@@ -32,7 +32,6 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>password</th>
                                             <th>Image</th>
                                             <th >Action</th>
                                         </tr>
@@ -48,7 +47,6 @@
                                                     <th>{{$us_no++}}</th>
                                                     <td>{{$item->user_name}}</td>
                                                     <td>{{$item->email}}</td>
-                                                    <td>{{$item->password}}</td>
                                                     <td><img src="/image/{{ $item->user_image}}" width="20px"></td>
 
                                                     <td class="text-center">
