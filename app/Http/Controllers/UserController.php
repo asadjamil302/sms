@@ -117,6 +117,8 @@ class UserController extends Controller
             $input['user_image'] = "$profileImage";
         }else{
             unset($input['user_image']);
+           
+            // return set($input["{{asset('assets/media/avatars/avatar15.jpg')}}"]);
         }
           
         $user->update($input);

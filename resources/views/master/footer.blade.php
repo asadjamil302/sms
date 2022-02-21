@@ -5,7 +5,7 @@
             Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
         </div>
         <div class="float-left">
-            <a class="font-w600" href="https://1.envato.market/95j" target="_blank">Codebase 3.3</a> &copy; <span class="js-year-copy"></span>
+            <a class="font-w600" href="https://1.envato.market/95j" target="_blank">S-M-S</a> &copy; <span class="js-year-copy"></span>
         </div>
     </div>
 </footer>
