@@ -24,6 +24,10 @@ class studentSeeder extends Seeder
             'slug' => Str::slug($name),
             'rollno' => Str::random(10),
             'department' => Str::random(10),
+            'parent_name' => Str::random(10),
+            'parent_email' => Str::random(10),
+            'student_image' => Str::random(10),
+            
             
            
         ]);

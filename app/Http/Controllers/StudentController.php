@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Student;
 use App\Models\Subject;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\Model;
 
 
 class StudentController extends Controller
@@ -57,7 +58,11 @@ class StudentController extends Controller
         $data = $request->validate([
             'student_name'=>'required',
             'rollno' => 'required|unique:students',
-            'department' => 'required'
+            'department' => 'required',
+            'parent_name' => 'required',
+            'parent_email' => 'required',
+            'student_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
+
         ]);
         
      // $slug = Str::slug('student_name');
@@ -68,6 +73,20 @@ class StudentController extends Controller
         $student->slug = Str::slug($request->student_name);
         $student->rollno  = $request->rollno;
         $student->department  = $request->department;
+        $student->parent_name  = $request->parent_name;
+        $student->parent_email  = $request->parent_email;
+        if ($image = $request->file('student_image')) {
+            $destinationPath = 'image/students/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $student->student_image = "$profileImage";
+            
+        }
+      else{
+         // return asset('image/default.png');
+         $student->student_image = 'default.png';
+      }
+
         $student->save();
         foreach($request->subject as $value){
             DB::table('student_subjects')->insert([
@@ -124,6 +143,18 @@ class StudentController extends Controller
         $student->student_name = $request->student_name;
         $student->rollno = $request->rollno;
         $student->department = $request->department;
+        $student->parent_name  = $request->parent_name;
+        $student->parent_email  = $request->parent_email;
+        if ($image = $request->file('student_image')) {
+            $destinationPath = 'image/students/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $student->student_image = "$profileImage";
+        }else{
+            $student->student_image = 'default.png';
+           
+        }
+      
         $student->save();
         $student->subjects()->detach();
         foreach($request->subject as $value){

@@ -19,6 +19,9 @@ class CreateStudentsTable extends Migration
             $table->string('slug');
             $table->string('rollno');
             $table->string('department');
+            $table->string('parent_name');
+            $table->string('parent_email');
+            $table->string('student_image');
             $table->timestamps();
         });
     }
