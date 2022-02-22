@@ -18,11 +18,11 @@
              <form action="{{route('student.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-        
+                    {{-- Student info --}}
                     <div class="col-lg-8 col-12">
                         <div class="block  block-themed">
                             <div class="block-header bg-corporate-light">
-                                <h3 class="block-title">Subject Form</h3>
+                                <h3 class="block-title">Student Form</h3>
                             </div>
                             <div class="block-content">
                                 <div class="row">
@@ -140,7 +140,75 @@
                             </div>
                         </div>
                     </div>
+                   {{-- end Student info --}}
+
                     <div class="col-lg-4 col-12">
+
+                         {{-- for parent info --}}
+                        <div class="block  block-themed">
+                            <div class="block-header bg-corporate-light">
+                                <h3 class="block-title">Student Parent Info</h3>
+                            </div>
+                            <div class="block-content">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="parent_name">Parent Name</label>
+                                            <input type="text" class="form-control form-control-lg  @if($errors->has('parent_name')) is-invalid @endif"  name="parent_name" placeholder="Enter parent Name">
+                                            @if($errors->has('parent_name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('parent_name') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="parentemail">Parent Email</label>
+                                                <input type="email" class="form-control form-control-lg  @if($errors->has('parent_email')) is-invalid @endif"  name="parent_email" placeholder="Enter Parent Email">
+                                                @if($errors->has('parent_email'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('parent_email') }}</strong>
+                                                </span>
+                                                @endif
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                        {{-- for student image --}}
+                        <div class="block block-themed">
+                                <div class="block-header  text-center bg-corporate-light">
+                                    <h3 class="block-title">Student Image</h3>
+                                </div>
+
+                                <div class="block-content block-content-full text-center">
+                                    <img class="img-avatar img-avatar-thumb" src="{{asset('assets/media/avatars/avatar1.jpg')}}" alt="">
+                                </div>
+
+                                <div class="block-content">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="user_image">Upload Image</label>
+                                                    <input type="file" class="form-control @if($errors->has('student_image')) is-invalid @endif"  name="student_image">
+                                                    @if($errors->has('student_image'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('student_image') }}</strong>
+                                                    </span>
+                                                    @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                        </div>
+
+
+
 
                     </div>
                 </div>

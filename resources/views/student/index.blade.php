@@ -33,6 +33,9 @@
                             <th>Student Name</th>
                             <th>Rollno</th>
                             <th>Department</th>
+                            <th>S.Image</th>
+                            <th>P.Name</th>
+                            <th>P.Email</th>
                             <th>Subjects</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -48,6 +51,11 @@
                             <td>{{$item->student_name}}</td>
                             <td>{{$item->rollno}}</td>
                             <td>{{$item->department}}</td>
+                            <td><img src="{{ asset('image/studets/'.$item->student_image)}}" width="20px"></td>
+                            <td>{{$item->parent_name}}</td>
+                            <td>{{$item->parent_email}}</td>
+                  
+
                             <td> 
                                     @foreach ($item->subjects as $sub)
                                 <span class="badge badge-primary">{{$sub->subject_name}}</span>
