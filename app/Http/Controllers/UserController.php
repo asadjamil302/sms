@@ -50,7 +50,7 @@ class UserController extends Controller
             'user_name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required',
-            'user_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'user_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
 
             $input['slug'] = Str::slug($request->user_name);
@@ -61,8 +61,14 @@ class UserController extends Controller
                 $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
                 $input['user_image'] = "$profileImage";
+                
             }
-            User::create($input);
+            else{
+        
+                $input['user_image']= 'default.png';
+
+            }
+            User::create($input);   
             
         return back()->with('success','record created successfully.');
     }
@@ -118,7 +124,6 @@ class UserController extends Controller
         }else{
             unset($input['user_image']);
            
-            // return set($input["{{asset('assets/media/avatars/avatar15.jpg')}}"]);
         }
           
         $user->update($input);
