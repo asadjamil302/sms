@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClazzsTable extends Migration
+class ClazzSubjects extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateClazzsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clazzs', function (Blueprint $table) {
+        Schema::create('clazz_subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('clazz_grade');
-            $table->string('clazz_section');
-            $table->string('clazz_name');
+            $table->foreignId('clazz_id')->constrained('clazzs')->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade'); 
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateClazzsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clazzs');
+        //
     }
 }

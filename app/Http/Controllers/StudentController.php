@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Clazz;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +32,10 @@ class StudentController extends Controller
 
  
 
+    public function student_detail()
+    {
+      
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -39,9 +44,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
-        $subjects = Subject::all();
-        return view ('student.create' , compact('subjects'));
+
+        $clazz = Clazz::all();
+        return view ('student.create', compact('clazz'));
         
       
     }
@@ -58,23 +63,32 @@ class StudentController extends Controller
         $data = $request->validate([
             'student_name'=>'required',
             'rollno' => 'required|unique:students',
-            'department' => 'required',
+            'dob' => 'required',
+            'admission_date' => 'required',
+            'clazz_name' => 'required',
+            'student_address' => 'required',
             'parent_name' => 'required',
-            'parent_email' => 'required',
+            'parent_contact' => 'required',
+            'emergency_contact' => 'required',
+            'parent_cnic' => 'required',
             'student_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
 
         ]);
+
+
         
-     // $slug = Str::slug('student_name');
-       //dd($request);
-       // $student = Student::create($data);
         $student    = new student();
         $student->student_name  = $request->student_name;
         $student->slug = Str::slug($request->student_name);
         $student->rollno  = $request->rollno;
-        $student->department  = $request->department;
+        $student->dob  = $request->dob;
+        $student->admission_date  = $request->admission_date;
+        $student->clazz_name  = $request->clazz_name;
+        $student->student_address  = $request->student_address;
         $student->parent_name  = $request->parent_name;
-        $student->parent_email  = $request->parent_email;
+        $student->parent_cnic  = $request->parent_cnic;
+        $student->parent_contact  = $request->parent_contact;
+        $student->emergency_contact  = $request->emergency_contact;
         if ($image = $request->file('student_image')) {
             $destinationPath = 'image/students/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -88,14 +102,7 @@ class StudentController extends Controller
       }
 
         $student->save();
-        foreach($request->subject as $value){
-            DB::table('student_subjects')->insert([
-                'student_id'=> $student->id,
-                'subject_id' => $value
-            ]);  
-            
-            
-        }
+      
         
         return redirect()->back()->with('success','Post created successfully.');   
     }
@@ -108,6 +115,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
+        $subjects = Subject::all();       
+        $student_subjects = $student->subjects->pluck('id')->toArray();
+
+        return view ('student.student_detail' ,compact('student','subjects','student_subjects'));
         
     }
 

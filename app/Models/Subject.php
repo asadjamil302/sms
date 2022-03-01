@@ -15,6 +15,9 @@ class Subject extends Model
         return $this->belongsToMany(Student::class,'student_subjects');
                     
     }
-  
+    public function clazz(){
+        return $this->belongsToMany(Clazz::class,'student_subjects');
+                    
+    }
 
 }

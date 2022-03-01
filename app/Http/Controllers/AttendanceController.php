@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Clazz;
 // use App\Models\attendance;
 use App\Models\Attendance;
 use Illuminate\Support\Str;
@@ -23,24 +24,10 @@ class AttendanceController extends Controller
     public function index()
     {
         //
-      
+        $clazz = Clazz::all();
         $students = Student::with('attendance')->get();
-
-        // $students = Student::whereHas(
-        //     'attendance', function($q){
-        //         // $q->latest('date');
-        //     }
-        // )->get();
-        
-        // $students = DB::table('students')
-        //     ->leftjoin('attendances', 'attendances.student_id', '=', 'students.id')
-        //     ->select('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.student_name' )
-        //     ->groupBy('attendances.id', 'attendances.student_id', 'attendances.attendance', 'students.id', 'students.student_name')
-        //     ->where('attendances.student_id', null)
-        //     ->get();
-
-            // dd($students);
-        return view('student.attendance', compact('students'));
+       
+        return view('attendance.set_attendance', compact('clazz'));
     }
 
     /**
@@ -63,25 +50,8 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $data = $request->validate([
-        //     'student_name' => 'required',
-        //     'rollno' => 'required',
-        //     'date'=>'required',
-        //     'attendance' => 'required',
-        // ]);    
-        // $today = Carbon::today();
-
-        // $attendance = Attendance::create($data);
-        // $attendance	  = new attendance();
-        // $attendance->student_name  = $request->student_name;
-        // $attendance->rollno  = $request->rollno;
-        // $attendance->attendance  = $request->attendance;
-        // $attendance->save();
-
-        // dd($request);
-
-       
+        $students = Student::with('attendance')->get();
+        return view('attendance.attendance', compact('students'));
 
       
         
@@ -95,7 +65,9 @@ class AttendanceController extends Controller
      */
     public function show(attendance $attendance)
     {
-        //
+        
+
+
         // $users = DB::table('attendance')
         //     ->join('contacts', 'user.id', '=', 'contacts.user_id')
         //     ->join('orders', 'user.id', '=', 'orders.user_id')
@@ -135,6 +107,7 @@ class AttendanceController extends Controller
     public function destroy(attendance $attendance)
     {
         //
+
     }
 
 

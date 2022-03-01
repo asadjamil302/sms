@@ -120,7 +120,9 @@
                             <a href="{{route('attendance.index')}}">Attendance</a>
                         </li>
                         
-                    
+                        {{-- <li>
+                            <a href="{{route('attendance/{attendance}.show')}}">Show Attendance</a>
+                        </li> --}}
                     </ul>
                 </li>
                 @role('super_admin')
@@ -162,8 +164,9 @@
                         <li>
                             <a href="{{route('teacher.create')}}">Create Teacher</a>
                 
-                <li>
-
+                        </li>
+                    </ul>
+                    </li>
 
                 {{-- <li>
                     <a class="nav-submenu" data-toggle="nav-submenu" ><i class="fa fa-user"></i><span class="sidebar-mini-hide">Role</span></a>
@@ -177,7 +180,7 @@
                 <li> --}}
                     
 
-            </ul>
+           
         </div>
         <!-- END Side Navigation -->
     </div>

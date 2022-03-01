@@ -1,43 +1,102 @@
-
 @extends('master.app')
 @section('css')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{{asset('assets/js/plugins/select2/css/select2.min.css')}}">
 @endsection
+
 @section('content')
-     <!-- Page Content -->
-     <div class="content">
-        <form action="{{route('clazzs.store')}}" method="POST">
-            @csrf
-            <div class="container" width="80%">
-                    <div class="form-colume">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Class Name</label>
-                            <input type="name" name="class_name" class="form-control" id="inputEmail4" placeholder="Enter the Subject Name">
+        
+        <div class="content">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ session('success') }}
+                </div>
+             @endif
+           
+
+            <div class="block block-themed">
+                <div class="block-header bg-corporate-light">
+                    <h3 class="block-title">Class Form</h3>
+                </div>
+                <div class="block-content">
+                    <form action="{{route('clazz.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="clazz_grade">class name</label>
+                                        <select id="inputState"name="clazz_grade"   class="form-control   @if($errors->has('clazz_grade')) is-invalid @endif">
+                            
+                                                @if($errors->has('clazz_grade'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('clazz_grade') }}</strong>
+                                                </span>
+                                                @endif
+
+                                                <option selected>1st</option>
+                                                <option>2nd</option>
+                                                <option>3rd</option>
+                                                <option>4th</option>
+                                                <option>5th</option>
+                                                <option>6th</option>
+                                                <option>7th</option>
+                                                <option>8th</option>
+                                                <option>9th</option>
+                                                <option>10th</option>
+                                                
+                                        </select>
+                            </div>
                         </div>
+                            
+                        <div class="col-12">
+                            <div class="form-group ">
+                                <label for="clazz_section">class section</label>
+                                        <select id="inputState"name="clazz_section"  class="form-control    @if($errors->has('clazz_section')) is-invalid @endif">
+                            
+                                                @if($errors->has('clazz_section'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('clazz_section') }}</strong>
+                                                </span>
+                                                @endif
 
-                        <div class="form-group col-md-6 ">
-                             <button type="submit" class="btn btn-primary">Submit</button>
+                                                <option selected>A</option>
+                                                <option>B</option>
+                                                <option>C</option>
+                                        </select>
+                            </div>
                         </div>
-                    </div>
-    
-            <div>
-        </form>
-    </div>
-    <!-- END Page Content -->
+                            
+                        
+                        <div class="col-12">
+                            <div class="form-group ">
+                                <label for="example-select2">Select Subject</label>
+                                <select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="subject[]" style="width: 100%;" data-placeholder="Choose one.." multiple>
+                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                   
+                                    @foreach($subjects as $item)
+                                        <option value="{{$item->id}}">{{$item->subject_name}}</option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                        </div>
+        
+                            <div class="form-group row">
+                                <div class="col-lg-9 ml-2">
+                                    <button type="submit" class="btn btn-alt-primary">Submit</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+  
+    @endsection
+    @section('script')
+    <!-- Page JS Plugins -->
+    <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
+    {{-- <script>jQuery(function(){ Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script> --}}
+    <script>jQuery(function(){ Codebase.helpers(['select2']); });</script>
+
 @endsection
-@section('script')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-@endsection
-
-
-
-
-
-
-
-
-
-
-
