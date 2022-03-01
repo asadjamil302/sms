@@ -133,14 +133,14 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="parent_name">Parent Name</label>
-                                            <input type="text" class="form-control form-control-lg"  name="parent_name" value="{{$item->parent_name}}" required>
+                                            <input type="text" class="form-control form-control-lg"  name="parent_name" value="{{$student->parent_name}}" required>
                                            
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="parentemail">Parent Email</label>
-                                                <input type="email" class="form-control form-control-lg"  name="parent_email" value="{{$item->parent_email}}" required>
+                                                <input type="email" class="form-control form-control-lg"  name="parent_email" value="{{$student->parent_email}}" required>
                                               
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                 </div>
 
                                 <div class="block-content block-content-full text-center">
-                                    <img class="img-avatar img-avatar-thumb" src="{{asset('assets/media/avatars/avatar1.jpg')}}" alt="">
+                                    <img class="img-avatar img-avatar-thumb" src="{{ asset('image/students/'.$student->student_image)}}" alt="">
                                 </div>
 
                                 <div class="block-content">
@@ -165,7 +165,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="user_image">Upload Image</label>
-                                                    <input type="file" class="form-control"  name="student_image" value="{{$item->student_image}}">
+                                                    <input type="file" class="form-control"  name="student_image" value="{{$student->student_image}}">
                                                   
                                             </div>
                                         </div>

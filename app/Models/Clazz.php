@@ -11,4 +11,12 @@ class Clazz extends Model
     protected $guarded = [
         'id'
     ];
+    public function students(){
+        return $this->hasMany(Student::class);
+                    
+    }
+    public function subjects(){
+        return $this->belongsToMany(Subject::class,'clazz_subjects');
+                    
+    }
 }

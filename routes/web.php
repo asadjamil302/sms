@@ -27,7 +27,6 @@ Route::get('/', function () {
     return view('welcome');
 
 });
-
 //for student
 Route::resource('student', StudentController::class, [ 'parameters' => [
     'student' => 'student:slug'
@@ -44,7 +43,7 @@ Route::get('absent', [AttendanceController::class, 'absent' ])->name('absent');
 Route::resource('attendance', AttendanceController::class );
 
 //for classes
-Route::resource('clazzs', ClazzController::class, [ 'parameters' => [
+Route::resource('clazz', ClazzController::class, [ 'parameters' => [
     'clazzs' => 'clazzs:slug'
 ]]);
 //for section

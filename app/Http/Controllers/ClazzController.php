@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Subject;
 use App\Models\Clazz;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ClazzController extends Controller
 {
     /**
@@ -29,7 +30,9 @@ class ClazzController extends Controller
     public function create()
     {
         //
-        return view('clazz.create');
+        
+        $subjects = Subject::all();
+        return view ('clazz.create' , compact('subjects'));
     }
 
     /**
@@ -41,13 +44,30 @@ class ClazzController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'class_name' => 'required',
+        $data = $request->validate([
+            'clazz_grade' => 'required',
+            'clazz_section' => 'required',
         ]);
-        // dd($request);
-        clazz::create($request->all());
+        
+        // $previous = clazz::where('slug',Str::slug($request->clazz_grade))->exists();
+       
+        // dd($previous);
 
-        return redirect()->route('clazzs.create')->with('success','Post created successfully.');
+        $data['slug'] = Str::slug($request->clazz_grade);
+        $data['clazz_name'] = ($request->clazz_grade.$request->clazz_section);
+    
+        
+        $clazz = clazz::create($data);
+
+        foreach($request->subject as $value){
+            DB::table('clazz_subjects')->insert([
+                'clazz_id'=> $clazz->id,
+                'subject_id' => $value
+            ]);      
+            
+        }
+
+        return redirect()->route('clazz.create')->with('success','Post created successfully.');
     }
 
     /**

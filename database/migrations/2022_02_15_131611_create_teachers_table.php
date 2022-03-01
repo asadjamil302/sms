@@ -22,6 +22,7 @@ class CreateTeachersTable extends Migration
             $table->string('cnic');
             $table->string('phone_no');
             $table->string('salary');
+            $table->string('joining_date');
             $table->string('designation');
             $table->timestamps();
       

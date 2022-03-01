@@ -19,9 +19,11 @@ class Student extends Model
                     
     }
     public function attendance(){
-        return $this->hasOne(Attendance::class);
+        return $this->HasMany(Attendance::class);
+    }
+    public function clazz(){
+        return $this->hasOne(Clazz::class);
                     
     }
    
-    
 }

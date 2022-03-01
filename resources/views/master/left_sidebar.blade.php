@@ -120,7 +120,9 @@
                             <a href="{{route('attendance.index')}}">Attendance</a>
                         </li>
                         
-                    
+                        {{-- <li>
+                            <a href="{{route('attendance/{attendance}.show')}}">Show Attendance</a>
+                        </li> --}}
                     </ul>
                 </li>
                 <li>
@@ -145,11 +147,25 @@
                         <li>
                             <a href="{{route('teacher.create')}}">Create Teacher</a>
                 
-                <li>
+                        </li>
+                    </ul>
+                    </li>
 
+                    <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('clazz.index')}}"><i class="fa fa-address-book"></i><span class="sidebar-mini-hide">Class</span></a>
+                        <ul>
+                            <li>
+                                <a href="{{route('clazz.index')}}">class</a>
+                            </li>
+                            <li>
+                                <a href="{{route('clazz.create')}}">Create class</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+    
 
-
-            </ul>
+           
         </div>
         <!-- END Side Navigation -->
     </div>

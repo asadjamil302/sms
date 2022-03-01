@@ -20,9 +20,9 @@
                 <tr>
 
                     <td>{{$item->id}}</td>
-                    <td>{{$item->student_name}}</td>
+                    <td><a  href="{{route('attendance.show', $item)}}">{{$item->student_name}}</a></td>
                     <td>{{$item->rollno}}</td>
-                    <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
+                    <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</td>
 
            
                     <td>
