@@ -67,6 +67,29 @@
                                     @endif
                                 </div>
                             </div>
+
+{{-- start --}}
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="roles">Assign Role </label>
+                                            <select id="inputState" name="roles"  class="form-control    @if($errors->has('roles')) is-invalid @endif">
+                                
+                                                @foreach($roles as $item)
+                                                    <option value="{{$item}}">{{$item}}</option>
+                                                 @endforeach
+                                                    @if($errors->has('roles'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('roles') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                    
+                                            </select>
+                                </div>
+                            </div>
+
+
+
+                            {{-- end --}}
         
                             <div class="form-group row">
                                 <div class="col-lg-9 ml-auto">

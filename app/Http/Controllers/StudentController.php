@@ -119,7 +119,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        
+    
         $subjects = Subject::all();       
         $student_subjects = $student->subjects->pluck('id')->toArray();
 

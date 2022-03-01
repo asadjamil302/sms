@@ -123,6 +123,23 @@
                     
                     </ul>
                 </li>
+                @role('super_admin')
+
+                <li>
+                    <a class="nav-subme nu" data-toggle="nav-submenu" href="#"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Roles</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{route('roles.index')}}">Roles</a>
+                        </li>
+                        <li>
+                            <a href="{{route('roles.create')}}">Create role</a>
+                        </li>
+                    </ul>
+                </li>
+                @endrole
+      
+
+
                 <li>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('user.index')}}"><i class="si si-user"></i><span class="sidebar-mini-hide">User</span></a>
                     <ul>
@@ -148,6 +165,17 @@
                 <li>
 
 
+                {{-- <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" ><i class="fa fa-user"></i><span class="sidebar-mini-hide">Role</span></a>
+                    <ul>
+                        
+                        <li>
+                            <a href="{{route('roles.create')}}">Create role</a>
+                        </li>
+                    
+                    </ul>
+                <li> --}}
+                    
 
             </ul>
         </div>

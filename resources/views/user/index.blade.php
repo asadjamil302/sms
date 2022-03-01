@@ -32,6 +32,7 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>User Roles</th>
                                             <th>Image</th>
                                             <th >Action</th>
                                         </tr>
@@ -47,6 +48,12 @@
                                                     <th>{{$us_no++}}</th>
                                                     <td>{{$item->user_name}}</td>
                                                     <td>{{$item->email}}</td>
+                                                    <td> 
+                                                        @foreach ($item->roles as $sub)
+                                                            <span class="badge badge-primary">{{$sub->name}}</span>
+                                                        @endforeach
+
+                                                    </td>
                                                     <td><img src="/image/{{ $item->user_image}}" width="20px"></td>
 
                                                     <td class="text-center">

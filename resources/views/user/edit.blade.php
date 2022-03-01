@@ -53,6 +53,25 @@
                                     </div>
                                 </div>
             
+                                {{-- start --}}
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="roles">Assign Roles</label>
+                                                <select id="inputState" name="roles"  class="form-control" value="{{$user->name}}" required>
+                                                        <option selected>
+                                                            @foreach ($roles as $item)
+                                                            <option value="{{$item}}" {{$userRole == $item ? 'selected' : ''}}> {{$item}}</option>
+                                                            @endforeach
+                                                        </option>
+                                                        
+                                                </select>
+                                    </div>
+                                </div>
+
+
+
+                                {{-- end --}}
+
                                 <div class="form-group row">
                                     <div class="col-lg-9 ml-auto">
                                         <button type="submit" class="btn btn-alt-primary">Submit</button>

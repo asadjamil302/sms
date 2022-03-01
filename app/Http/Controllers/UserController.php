@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,15 +16,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
         //
-        $users = User::all(); 
+        $users = User::all();
+        // dd($users); 
         return view('user.index', compact('users'));
        
     }
@@ -34,7 +38,8 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        $roles = Role::pluck('name')->all();
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -49,12 +54,13 @@ class UserController extends Controller
         $input = $request->validate([
             'user_name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required',
             'user_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
+            'roles' => 'required',
+            
             ]);
 
             $input['slug'] = Str::slug($request->user_name);
-
+           $input['password'] = Hash::make($request->password);
   //for image crud
             if ($image = $request->file('user_image')) {
                 $destinationPath = 'image/';
@@ -68,7 +74,8 @@ class UserController extends Controller
                 $input['user_image']= 'default.png';
 
             }
-            User::create($input);   
+           $user = User::create($input);
+            $user->assignRole($request->input('roles'));   
             
         return back()->with('success','record created successfully.');
     }
@@ -93,7 +100,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        return view('user.edit',compact('user'));
+        $roles = Role::pluck('name')->all();
+        $userRole = $user->roles->pluck('name')->first();
+        return view('user.edit', compact('user','roles','userRole'));
     }
 
     /**
@@ -110,8 +119,8 @@ class UserController extends Controller
             'user_name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            //for updation i add image in this crud
             'user_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'roles' => 'required',
             ]);  
 //image crud
             $input = $request->all();
@@ -122,11 +131,14 @@ class UserController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['user_image'] = "$profileImage";
         }else{
-            unset($input['user_image']);
+            $input['user_image']= 'default.png';
            
         }
           
         $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$user)->delete();
+    
+        $user->assignRole($request->input('roles'));
         return redirect()->back()->with('success', 'record has been updated');
     }
 
