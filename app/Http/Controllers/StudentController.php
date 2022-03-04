@@ -130,7 +130,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-    
+        // $clazz = Clazz::all();
         $subjects = Subject::all();       
         $student_subjects = $student->subjects->pluck('id')->toArray();
 
