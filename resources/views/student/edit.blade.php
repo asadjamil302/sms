@@ -63,7 +63,7 @@
                                             <select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="clazz_name[]" >
                                                 <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                 @foreach($clazz as $item)
-                                                <option value="{{$item->id}}" {{in_array($item->id, $clazz_subjects) ? 'selected':''}}> {{$item->clazz_name}}</option>
+                                                <option >{{$item->clazz_name}}</option>
                                                     {{-- <option >{{$item->clazz_name}}</option> --}}
                                                 @endforeach
                                                 

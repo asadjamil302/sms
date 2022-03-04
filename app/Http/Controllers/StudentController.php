@@ -115,10 +115,11 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $subjects = Subject::all();       
-        $student_subjects = $student->subjects->pluck('id')->toArray();
-
-        return view ('student.student_detail' ,compact('student','subjects','student_subjects'));
+        $clazz = Clazz::all();
+        // $subjects = Subject::all();       
+        // $student_subjects = $student->subjects->pluck('id')->toArray();
+        // return view ('student.student_detail' ,compact('student','subjects','student_subjects'));
+        return view ('student.student_detail' ,compact('student','clazz'));
         
     }
 
@@ -130,11 +131,11 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        // $clazz = Clazz::all();
-        $subjects = Subject::all();       
-        $student_subjects = $student->subjects->pluck('id')->toArray();
+        $clazz = Clazz::all();
+        // $subjects = Subject::all();    
+        // $student_subjects = $student->cla->pluck('id')->toArray();
 
-        return view ('student.edit' ,compact('student','subjects','student_subjects'));
+        return view ('student.edit' ,compact('student','clazz'));
 
         
     } 
