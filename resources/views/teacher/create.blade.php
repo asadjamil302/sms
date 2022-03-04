@@ -1,5 +1,7 @@
 @extends('master.app')
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/js/plugins/select2/css/select2.min.css')}}">
+@endsection
 @section('content')
 <div class="content" >
     @if (session('success'))
@@ -97,8 +99,34 @@
                             </div>
                         </div>
                         
+                        <div class="form-group row" id="dynamic_add">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group ">
+                                    <label for="example-select2">Assign class</label>
+                                    <select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="" style="width: 100%;" data-placeholder="Choose one..">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <div class="form-group ">
+                                    <label for="example-select2">Assign Subject</label>
+                                    <select class="js-select2 form-control multiple-select" id="example-select2-multiple" name="" style="width: 100%;" data-placeholder="Choose one..">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="form-group ">
+                                    <button type="button" id="add_btn" class="btn btn-alt-primary text-center">Add More</button>
+                                </div>
+                            </div>
+                        </div>  
+                       
                         
-                        
+                  
+
                         <div class="form-group row">
                             <label class="col-12" for="example-select">salary</label>
                             <div class="col-md-6">
@@ -136,7 +164,7 @@
                             @endif
                             </div>
                         </div>
-                       
+                        
                         
                     
                         <div class="form-group row">
@@ -152,4 +180,34 @@
         </div>
    
 </div>     
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#add_btn').on('click', function() {
+
+                var html ='';
+                html+='';
+                html+='<div class="col-12 col-md-4"><div class="form-group"><label for="example-select2">Assign class</label><select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="" style="width: 100%;" data-placeholder="Choose one.."><option></option></select></div></div>';
+                html+='<div class="col-12 col-md-4"><div class="form-group"><label for="example-select2">Assign Subject</label><select class="js-select2 form-control multiple-select" id="example-select2-multiple" name="" style="width: 100%;" data-placeholder="Choose one.."><option></option></select></div></div>';
+                html+='<div class="col-12 col-md-2"><div class="form-group"><button type="button"  class="btn btn-alt-primary text-center" id="remove"><i class="fa fa-trash"></i></button></div></div>';
+                html+='</div>';
+                $('#dynamic_add').append(html);
+
+            });
+        });
+        $(document).on('click', '#remove', function() {
+                $(this).closest('#dynamic_add').remove();
+
+            });
+
+    </script>
+
+
+
+    <!-- Page JS Plugins -->
+    <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
+    {{-- <script>jQuery(function(){ Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script> --}}
+    <script>jQuery(function(){ Codebase.helpers(['select2']); });</script>
+
 @endsection

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Clazz;
 use App\Models\Teacher;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\Model;
 
 class TeacherController extends Controller
 {
@@ -17,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        
+       
         $teacher = Teacher::all();
         return view('teacher.index',compact('teacher'));
     }
@@ -30,7 +31,7 @@ class TeacherController extends Controller
     public function create()
     {
         //
-        
+        $clazz = Clazz::all();
         
         return view('teacher.create');
     }
@@ -58,6 +59,7 @@ class TeacherController extends Controller
         
         
         $teacher = new Teacher();
+    
         $teacher->teacher_name =$request->input('teacher_name');
         $teacher['slug'] = Str::slug($request->teacher_name);
         

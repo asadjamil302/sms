@@ -20,6 +20,8 @@ class ClazzController extends Controller
     public function index()
     {
         //
+        $clazz = Clazz::all();
+        return view('clazz.index', compact('clazz'));
     }
 
     /**
@@ -49,9 +51,7 @@ class ClazzController extends Controller
             'clazz_section' => 'required',
         ]);
         
-        // $previous = clazz::where('slug',Str::slug($request->clazz_grade))->exists();
-       
-        // dd($previous);
+        
 
         $data['slug'] = Str::slug($request->clazz_grade);
         $data['clazz_name'] = ($request->clazz_grade.$request->clazz_section);
@@ -90,6 +90,10 @@ class ClazzController extends Controller
     public function edit(Clazz $clazz)
     {
         //
+        $subjects = Subject::all();       
+        $clazz_subjects = $clazz->subjects->pluck('id')->toArray();
+
+        return view ('clazz.edit' ,compact('clazz','subjects','clazz_subjects'));
     }
 
     /**
@@ -102,6 +106,18 @@ class ClazzController extends Controller
     public function update(Request $request, Clazz $clazz)
     {
         //
+        $clazz->clazz_grade = $request->clazz_grade;
+        $clazz->clazz_section = $request->clazz_section;
+        $clazz->save();
+        $clazz->subjects()->detach();
+        foreach($request->subject as $value){
+            DB::table('clazz_subjects')->insert([
+                'clazz_id'=> $clazz->id,
+                'subject_id' => $value
+            ]);
+        }
+        return redirect()->route('clazz.index')->with('success', 'record has been updated');
+
     }
 
     /**
@@ -113,5 +129,7 @@ class ClazzController extends Controller
     public function destroy(Clazz $clazz)
     {
         //
+        $clazz->delete();
+        return redirect()->route('clazz.index')->with('success', 'record has been deleted');
     }
 }

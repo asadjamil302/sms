@@ -166,18 +166,20 @@
                 
                         </li>
                     </ul>
-                    </li>
+                </li>
 
-                {{-- <li>
-                    <a class="nav-submenu" data-toggle="nav-submenu" ><i class="fa fa-user"></i><span class="sidebar-mini-hide">Role</span></a>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="{{route('clazz.index')}}"><i class="fa fa-address-book"></i><span class="sidebar-mini-hide">Class</span></a>
                     <ul>
-                        
                         <li>
-                            <a href="{{route('roles.create')}}">Create role</a>
+                            <a href="{{route('clazz.index')}}">class</a>
+                        </li>
+                        <li>
+                            <a href="{{route('clazz.create')}}">Create class</a>
                         </li>
                     
                     </ul>
-                <li> --}}
+                </li>
                     
 
            

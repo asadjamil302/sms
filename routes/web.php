@@ -59,7 +59,7 @@ Route::resource('attendance', AttendanceController::class );
 
 //for classes
 Route::resource('clazz', ClazzController::class, [ 'parameters' => [
-    'clazzs' => 'clazzs:slug'
+    'clazz' => 'clazz:slug'
 ]]);
 //for section
 Route::resource('sections', SectionController::class);
