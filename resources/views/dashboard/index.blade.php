@@ -7,10 +7,10 @@
             <a class="block block-link-shadow text-right" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-bag fa-3x text-body-bg-dark"></i>
+                        <i class="fa fa-graduation-cap fa-3x text-body-bg-dark"></i>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="1500">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Sales</div>
+                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $students }}">0</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Students</div>
                 </div>
             </a>
         </div>
@@ -18,10 +18,10 @@
             <a class="block block-link-shadow text-right" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-wallet fa-3x text-body-bg-dark"></i>
+                        <i class="fa fa-book fa-3x text-body-bg-dark"></i>
                     </div>
-                    <div class="font-size-h3 font-w600">$<span data-toggle="countTo" data-speed="1000" data-to="780">0</span></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Earnings</div>
+                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $subjects }}">0</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Subjects</div>
                 </div>
             </a>
         </div>
@@ -29,10 +29,10 @@
             <a class="block block-link-shadow text-right" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-envelope-open fa-3x text-body-bg-dark"></i>
+                        <i class="fa fa-users fa-3x text-body-bg-dark"></i>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="15">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Messages</div>
+                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $teacher }}">0</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Teachers</div>
                 </div>
             </a>
         </div>
@@ -40,10 +40,10 @@
             <a class="block block-link-shadow text-right" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-users fa-3x text-body-bg-dark"></i>
+                        <i class="fa fa-address-book fa-3x text-body-bg-dark"></i>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="4252">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Online</div>
+                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $clazz }}">0</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Classes</div>
                 </div>
             </a>
         </div>
