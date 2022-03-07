@@ -1,54 +1,57 @@
 @extends('master.app')
 @section('content')
 <div class="content">
-    <div class="row invisible" data-toggle="appear">
-        <!-- Row #1 -->
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="fa fa-graduation-cap fa-3x text-body-bg-dark"></i>
+   
+    @hasanyrole('teacher|super_admin')
+        <div class="row invisible" data-toggle="appear">
+            <!-- Row #1 -->
+            <div class="col-6 col-xl-3">
+                <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                    <div class="block-content block-content-full clearfix">
+                        <div class="float-left mt-10 d-none d-sm-block">
+                            <i class="fa fa-graduation-cap fa-3x text-body-bg-dark"></i>
+                        </div>
+                        <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $students }}">0</div>
+                        <div class="font-size-sm font-w600 text-uppercase text-muted">Total Students</div>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $students }}">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Students</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="fa fa-book fa-3x text-body-bg-dark"></i>
+                </a>
+            </div>
+            <div class="col-6 col-xl-3">
+                <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                    <div class="block-content block-content-full clearfix">
+                        <div class="float-left mt-10 d-none d-sm-block">
+                            <i class="fa fa-book fa-3x text-body-bg-dark"></i>
+                        </div>
+                        <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $subjects }}">0</div>
+                        <div class="font-size-sm font-w600 text-uppercase text-muted">Total Subjects</div>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $subjects }}">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Subjects</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="fa fa-users fa-3x text-body-bg-dark"></i>
+                </a>
+            </div>
+            <div class="col-6 col-xl-3">
+                <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                    <div class="block-content block-content-full clearfix">
+                        <div class="float-left mt-10 d-none d-sm-block">
+                            <i class="fa fa-users fa-3x text-body-bg-dark"></i>
+                        </div>
+                        <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $teacher }}">0</div>
+                        <div class="font-size-sm font-w600 text-uppercase text-muted">Total Teachers</div>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $teacher }}">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Teachers</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="fa fa-address-book fa-3x text-body-bg-dark"></i>
+                </a>
+            </div>
+            <div class="col-6 col-xl-3">
+                <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                    <div class="block-content block-content-full clearfix">
+                        <div class="float-left mt-10 d-none d-sm-block">
+                            <i class="fa fa-address-book fa-3x text-body-bg-dark"></i>
+                        </div>
+                        <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $clazz }}">0</div>
+                        <div class="font-size-sm font-w600 text-uppercase text-muted">Total Classes</div>
                     </div>
-                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="{{ $clazz }}">0</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Classes</div>
-                </div>
-            </a>
+                </a>
+            </div>
+            <!-- END Row #1 -->
         </div>
-        <!-- END Row #1 -->
-    </div>
+    @endhasanyrole
     <div class="row invisible" data-toggle="appear">
         <!-- Row #2 -->
         <div class="col-md-6">

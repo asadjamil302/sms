@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Clazz;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClazzFactory extends Factory
 {
@@ -23,9 +24,10 @@ class ClazzFactory extends Factory
         $clazz_name = $clazz_grade.' '.$clazz_section;
         return [
             //
-            'clazz_grade' => $clazz_grade,
-                'slug' =>  $clazz_name,
+                'clazz_grade' => $clazz_grade,
+                'slug' =>  Str::slug($clazz_name),
                 'clazz_section' => $clazz_section,
+                
                 'clazz_name' => $clazz_name,
         ];
 
