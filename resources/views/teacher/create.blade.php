@@ -103,8 +103,11 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="example-select2">Assign class</label>
-                                        <select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="" style="width: 100%;" data-placeholder="Choose one..">
+                                        <select class="js-select2 form-control multiple-select" id="example2-select2-multiple" name="clazz_name" style="width: 100%;" data-placeholder="Choose one..">
                                             <option></option>
+                                            @foreach($clazz as $item)
+                                                <option >{{$item->clazz_name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -188,8 +191,11 @@
                                 +'<div class="col-4">'
                                     +'<div class="form-group">'
                                        +'<label for="example-select2">Assign class</label>'
-                                       +'<select class="js-select2 form-control multiple-select" name="" style="width: 100%;" data-placeholder="Choose one..">'
+                                       +'<select class="js-select2 form-control multiple-select" name="clazz_name" style="width: 100%;" data-placeholder="Choose one..">'
                                             +'<option></option>'
+                                                +'@foreach($clazz as $item)'
+                                                    +'<option >{{$item->clazz_name}}</option>'
+                                                +'@endforeach'
                                        +' </select>'
                                    +' </div>'
                                 +'</div>'
@@ -212,8 +218,8 @@
 
             });
         });
-        $(document).on('click', 'remove', function() {
-                $(this).parent().remove();
+        $(document).on('click', '.remove', function() {
+                $(this).parent().parent().parent().remove();
 
             });
 

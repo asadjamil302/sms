@@ -33,7 +33,7 @@ class TeacherController extends Controller
         //
         $clazz = Clazz::all();
         
-        return view('teacher.create');
+        return view('teacher.create', compact('clazz'));
     }
 
     /**
